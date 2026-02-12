@@ -1,0 +1,14 @@
+# Vérifie qu'aucun fichier .env n'est commité (repo public)
+name: Security check
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  no-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier qu’aucun .env n’est suivi par git
+        run: bash scripts/check-no-env-committed.sh
