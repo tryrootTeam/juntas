@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,14 +49,14 @@ const router = createRouter({
     {
       path: '/onboarding',
       name: 'onboarding',
-      component: () => import('@/views/OnboardingView.vue'),
-      meta: { requiresAuth: true },
+      component: () => import('@/views/Onboarding/OnboardingFlow.vue'),
+      meta: { requiresAuth: true, requiresIncompleteProfile: true },
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('@/views/DashboardView.vue'),
-      meta: { requiresAuth: true },
+      meta: { requiresAuth: true, requiresCompleteProfile: true },
     },
     {
       path: '/:pathMatch(.*)*',
@@ -69,6 +70,7 @@ const router = createRouter({
 // Auth guard
 router.beforeEach(async (to, _from, next) => {
   const authStore = useAuthStore()
+  const userStore = useUserStore()
 
   if (!authStore.initialized) {
     await authStore.initialize()
@@ -76,11 +78,33 @@ router.beforeEach(async (to, _from, next) => {
 
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     next({ name: 'login', query: { redirect: to.fullPath } })
-  } else if (to.meta.public === false && authStore.isAuthenticated && (to.name === 'auth' || to.name === 'login' || to.name === 'register')) {
-    next({ name: 'dashboard' })
-  } else {
-    next()
+    return
   }
+
+  if (to.meta.public === false && authStore.isAuthenticated && (to.name === 'auth' || to.name === 'login' || to.name === 'register')) {
+    next({ name: 'dashboard' })
+    return
+  }
+
+  if (to.meta.requiresIncompleteProfile && authStore.isAuthenticated) {
+    const uid = authStore.user?.id
+    if (uid && !userStore.profile) await userStore.fetchProfile(uid)
+    if (userStore.profile?.profile_completed) {
+      next({ name: 'dashboard' })
+      return
+    }
+  }
+
+  if (to.meta.requiresCompleteProfile && authStore.isAuthenticated) {
+    const uid = authStore.user?.id
+    if (uid && !userStore.profile) await userStore.fetchProfile(uid)
+    if (uid && userStore.profile && !userStore.profile.profile_completed) {
+      next({ name: 'onboarding' })
+      return
+    }
+  }
+
+  next()
 })
 
 export default router
