@@ -49,6 +49,21 @@ src/
 └── main.js
 ```
 
+## Déploiement Netlify
+
+Pour que l’app fonctionne après déploiement, **configurez les variables d’environnement** dans Netlify (le fichier `.env` n’est pas déployé) :
+
+1. Netlify → votre site → **Site configuration** (ou **Site settings**) → **Environment variables**
+2. **Add a variable** (ou **Add from .env** pour coller depuis votre `.env` local) :
+   - `VITE_SUPABASE_URL` = l’URL de votre projet (ex. `https://xxx.supabase.co`)
+   - `VITE_SUPABASE_ANON_KEY` = la clé anonyme (anon key) du projet Supabase
+
+Vous les trouvez dans Supabase : **Project Settings** → **API** (Project URL et anon public key).
+
+3. **Redéployer** le site (Deploys → **Trigger deploy** → **Deploy site**) pour que le build prenne en compte les nouvelles variables (Vite injecte les `VITE_*` au moment du build).
+
+Sans ces variables, la console affichera une erreur explicite invitant à les configurer.
+
 ## Backend - Landing Page (MVP)
 
 - **Page publique** : route `/` sans auth (`meta: { public: true, requiresAuth: false }` dans le router).
