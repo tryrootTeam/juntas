@@ -1,0 +1,65 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        terracota: {
+          DEFAULT: '#C67B5C',
+          50: '#F5E8E3',
+          100: '#ECD9D1',
+          200: '#DDB9AC',
+          300: '#CE9987',
+          400: '#BF7962',
+          500: '#C67B5C',
+          600: '#A86446',
+          700: '#8A4D31',
+          800: '#6C361C',
+          900: '#4E1F07',
+        },
+        sage: {
+          DEFAULT: '#9CAF88',
+          50: '#F2F5EF',
+          100: '#E6EBE0',
+          200: '#CCD7C1',
+          300: '#B3C3A2',
+          400: '#9CAF88',
+          500: '#849B6E',
+          600: '#6C8754',
+          700: '#54733A',
+          800: '#3C5F20',
+          900: '#244B06',
+        },
+        cream: {
+          DEFAULT: '#F5F0E8',
+          50: '#FFFFFF',
+          100: '#FDFCFA',
+          200: '#FAF7F2',
+          300: '#F5F0E8',
+          400: '#EDE5D8',
+          500: '#E5DAC8',
+        },
+        deepblue: {
+          DEFAULT: '#2C3E50',
+          50: '#E8ECEF',
+          100: '#D1D9DF',
+          200: '#A3B3BF',
+          300: '#758D9F',
+          400: '#47677F',
+          500: '#2C3E50',
+          600: '#243240',
+          700: '#1C2630',
+          800: '#141920',
+          900: '#0C0D10',
+        },
+      },
+      fontFamily: {
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}
