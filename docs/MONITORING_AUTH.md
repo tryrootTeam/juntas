@@ -70,4 +70,5 @@ Calculer `oauth_errors / (oauth_errors + auth_successes)`. Si > 0,05 → alerter
 2. **Option intégrée** : **Supabase Edge Function** + **pg_cron** (ou appel HTTP planifié) qui exécute ces requêtes et envoie un email / webhook en cas de dépassement.
 3. **Option SaaS** : exporter les logs vers un outil (ex. Datadog, Logtail) et définir les alertes côté outil.
 
-Pour l’instant, les événements sont bien enregistrés ; il reste à brancher le canal d’alerte (email/Slack/webhook) selon votre infra.
+Pour l’instant, les événements sont bien enregistrés ; il reste à brancher le canal d’alerte (email/Slack/webhook) selon votre infra..
+ 
