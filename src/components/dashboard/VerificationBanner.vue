@@ -27,11 +27,21 @@ const props = defineProps({
   status: {
     type: String,
     default: 'pending',
-    validator: (v) => ['pending', 'under_review', 'rejected'].includes(v),
+    validator: (v) => ['pending', 'under_review', 'rejected', 'verified'].includes(v),
   },
 })
 
 const config = {
+  verified: {
+    bg: 'bg-sage-green/10',
+    border: 'border-sage-green/30',
+    text: 'text-sage-green',
+    icon: '✓',
+    title: 'Verificada',
+    message: 'Tu identidad está verificada. Tienes acceso a todas las funciones.',
+    linkTo: null,
+    linkLabel: '',
+  },
   pending: {
     bg: 'bg-amber-50',
     border: 'border-amber-200',

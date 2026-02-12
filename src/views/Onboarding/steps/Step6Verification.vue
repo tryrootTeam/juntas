@@ -4,7 +4,7 @@
       {{ errorMessage }}
     </div>
 
-    <p class="text-sm text-deepblue-300">
+    <p class="text-sm text-warm-grey">
       Sube un documento de identidad (DNI, pasaporte) y una selfie para verificar tu perfil. Formatos: JPG, PNG o PDF. Máx. 5 MB por archivo.
     </p>
 
@@ -26,7 +26,7 @@
 
     <button
       type="submit"
-      class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-primary w-full disabled:opacity-60"
       :disabled="loading || (!documentFile && !selfieFile)"
     >
       {{ loading ? 'Enviando…' : 'Completar onboarding' }}

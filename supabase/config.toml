@@ -4,6 +4,8 @@
 
 [auth]
 site_url = "http://localhost:5173"
+# URLs autorisées pour le retour OAuth (obligatoire pour « Continuar con Google » en local)
+additional_redirect_urls = ["http://localhost:5173/auth/callback", "http://localhost:5173/reset-password"]
 
 [auth.external.google]
 enabled = true

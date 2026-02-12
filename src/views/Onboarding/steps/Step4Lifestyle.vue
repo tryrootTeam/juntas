@@ -5,11 +5,11 @@
     </div>
 
     <div>
-      <label for="step4-cleanliness" class="block text-sm font-medium text-deepblue mb-1">Nivel de orden</label>
+      <label for="step4-cleanliness" class="block text-sm font-medium text-charcoal mb-1">Nivel de orden</label>
       <select
         id="step4-cleanliness"
         v-model="form.cleanliness_level"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="minimal">Mínimo</option>
@@ -19,11 +19,11 @@
     </div>
 
     <div>
-      <label for="step4-noise" class="block text-sm font-medium text-deepblue mb-1">Nivel de ruido</label>
+      <label for="step4-noise" class="block text-sm font-medium text-charcoal mb-1">Nivel de ruido</label>
       <select
         id="step4-noise"
         v-model="form.noise_level"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="quiet">Tranquilo</option>
@@ -33,11 +33,11 @@
     </div>
 
     <div>
-      <label for="step4-smoker" class="block text-sm font-medium text-deepblue mb-1">¿Fumas?</label>
+      <label for="step4-smoker" class="block text-sm font-medium text-charcoal mb-1">¿Fumas?</label>
       <select
         id="step4-smoker"
         v-model="form.is_smoker"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="no">No</option>
@@ -48,7 +48,7 @@
 
     <button
       type="submit"
-      class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-primary w-full disabled:opacity-60"
       :disabled="loading"
     >
       {{ loading ? 'Guardando…' : 'Siguiente' }}

@@ -5,25 +5,25 @@
     </div>
 
     <div>
-      <label for="step1-name" class="block text-sm font-medium text-deepblue mb-1">Nombre</label>
+      <label for="step1-name" class="block text-sm font-medium text-charcoal mb-1">Nombre</label>
       <input
         id="step1-name"
         :value="form.name"
         type="text"
         readonly
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 bg-cream-100 text-deepblue-300 cursor-not-allowed"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand bg-cream-100 text-warm-grey cursor-not-allowed"
       />
     </div>
 
     <div>
-      <label for="step1-age" class="block text-sm font-medium text-deepblue mb-1">Edad <span class="text-red-500">*</span></label>
+      <label for="step1-age" class="block text-sm font-medium text-charcoal mb-1">Edad <span class="text-red-500">*</span></label>
       <input
         id="step1-age"
         v-model.number="form.age"
         type="number"
         min="18"
         max="99"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
         :class="{ 'border-red-400': errors.age }"
         placeholder="Ej. 32"
       />
@@ -31,12 +31,12 @@
     </div>
 
     <div>
-      <label for="step1-occupation" class="block text-sm font-medium text-deepblue mb-1">Profesión <span class="text-red-500">*</span></label>
+      <label for="step1-occupation" class="block text-sm font-medium text-charcoal mb-1">Profesión <span class="text-red-500">*</span></label>
       <input
         id="step1-occupation"
         v-model.trim="form.occupation"
         type="text"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
         :class="{ 'border-red-400': errors.occupation }"
         placeholder="Ej. Project Manager"
       />
@@ -44,19 +44,19 @@
     </div>
 
     <div>
-      <label class="block text-sm font-medium text-deepblue mb-2">Zonas preferidas <span class="text-red-500">*</span></label>
+      <label class="block text-sm font-medium text-charcoal mb-2">Zonas preferidas <span class="text-red-500">*</span></label>
       <div class="flex flex-wrap gap-2">
         <label
           v-for="zone in zones"
           :key="zone"
           class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-colors"
-          :class="form.preferred_zones.includes(zone) ? 'border-terracota bg-terracota-50 text-terracota-700' : 'border-cream-400 hover:border-deepblue-200'"
+          :class="form.preferred_zones.includes(zone) ? 'border-soft-terracota bg-soft-terracota/20 text-soft-terracota' : 'border-warm-sand hover:border-charcoal/30'"
         >
           <input
             v-model="form.preferred_zones"
             type="checkbox"
             :value="zone"
-            class="rounded border-cream-400 text-terracota focus:ring-terracota"
+            class="rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota"
           />
           <span>{{ zone }}</span>
         </label>
@@ -65,7 +65,7 @@
     </div>
 
     <div>
-      <label for="step1-budget" class="block text-sm font-medium text-deepblue mb-1">Presupuesto mensual (€) <span class="text-red-500">*</span></label>
+      <label for="step1-budget" class="block text-sm font-medium text-charcoal mb-1">Presupuesto mensual (€) <span class="text-red-500">*</span></label>
       <input
         id="step1-budget"
         v-model.number="form.monthly_budget"
@@ -73,17 +73,17 @@
         min="100"
         max="2000"
         step="50"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
         :class="{ 'border-red-400': errors.monthly_budget }"
         placeholder="Ej. 500"
       />
       <p v-if="errors.monthly_budget" class="mt-1 text-sm text-red-600">{{ errors.monthly_budget }}</p>
-      <p class="mt-1 text-xs text-deepblue-300">Entre 100 € y 2000 €</p>
+      <p class="mt-1 text-xs text-charcoal-300">Entre 100 € y 2000 €</p>
     </div>
 
     <button
       type="submit"
-      class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-primary w-full disabled:opacity-60"
       :disabled="loading"
     >
       {{ loading ? 'Guardando…' : 'Siguiente' }}

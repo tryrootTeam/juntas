@@ -1,36 +1,36 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deepblue/50" @click.self="$emit('close')">
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/50" @click.self="$emit('close')">
     <div class="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto" role="dialog" aria-labelledby="modal-family-title">
       <div class="p-6">
-        <h2 id="modal-family-title" class="text-xl font-semibold text-deepblue mb-4">Situación familiar</h2>
+        <h2 id="modal-family-title" class="text-xl font-semibold text-charcoal mb-4">Situación familiar</h2>
         <form class="space-y-4" @submit.prevent="handleSubmit">
           <div v-if="errorMessage" class="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm" role="alert">
             {{ errorMessage }}
           </div>
           <div>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input v-model="form.has_children" type="checkbox" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
-              <span class="text-sm font-medium text-deepblue">¿Tienes hijos?</span>
+              <input v-model="form.has_children" type="checkbox" class="rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota" />
+              <span class="text-sm font-medium text-charcoal">¿Tienes hijos?</span>
             </label>
           </div>
           <template v-if="form.has_children">
             <div>
-              <label class="block text-sm font-medium text-deepblue mb-2">Edades de los hijos</label>
+              <label class="block text-sm font-medium text-charcoal mb-2">Edades de los hijos</label>
               <div class="flex flex-wrap gap-2">
                 <label
                   v-for="age in childAgeOptions"
                   :key="age"
                   class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-colors"
-                  :class="form.children_ages.includes(age) ? 'border-terracota bg-terracota-50' : 'border-cream-400'"
+                  :class="form.children_ages.includes(age) ? 'border-soft-terracota bg-soft-terracota/20' : 'border-warm-sand'"
                 >
-                  <input v-model="form.children_ages" type="checkbox" :value="age" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
+                  <input v-model="form.children_ages" type="checkbox" :value="age" class="rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota" />
                   <span>{{ age }} años</span>
                 </label>
               </div>
             </div>
             <div>
-              <label for="edit-custody" class="block text-sm font-medium text-deepblue mb-1">Tipo de custodia</label>
-              <select id="edit-custody" v-model="form.custody_type" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+              <label for="edit-custody" class="block text-sm font-medium text-charcoal mb-1">Tipo de custodia</label>
+              <select id="edit-custody" v-model="form.custody_type" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
                 <option value="">Selecciona</option>
                 <option value="shared_50">Compartida 50/50</option>
                 <option value="shared_other">Compartida (otro)</option>
@@ -41,13 +41,13 @@
           </template>
           <div>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input v-model="form.has_pets" type="checkbox" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
-              <span class="text-sm font-medium text-deepblue">¿Tienes mascotas?</span>
+              <input v-model="form.has_pets" type="checkbox" class="rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota" />
+              <span class="text-sm font-medium text-charcoal">¿Tienes mascotas?</span>
             </label>
           </div>
           <div v-if="form.has_pets">
-            <label for="edit-pet" class="block text-sm font-medium text-deepblue mb-1">Tipo de mascota</label>
-            <select id="edit-pet" v-model="form.pet_type" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-pet" class="block text-sm font-medium text-charcoal mb-1">Tipo de mascota</label>
+            <select id="edit-pet" v-model="form.pet_type" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="dog">Perro</option>
               <option value="cat">Gato</option>
@@ -55,10 +55,10 @@
             </select>
           </div>
           <div class="flex gap-3 pt-2">
-            <button type="button" class="flex-1 py-2.5 rounded-lg font-medium border border-cream-400 text-deepblue hover:bg-cream-100 transition" @click="$emit('close')">
+            <button type="button" class="btn-secondary flex-1" @click="$emit('close')">
               Cancelar
             </button>
-            <button type="submit" class="flex-1 py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota disabled:opacity-60" :disabled="loading">
+            <button type="submit" class="btn-primary flex-1 disabled:opacity-60" :disabled="loading">
               {{ loading ? 'Guardando…' : 'Guardar' }}
             </button>
           </div>

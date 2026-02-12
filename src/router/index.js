@@ -83,6 +83,12 @@ const router = createRouter({
       meta: { requiresAuth: true, requiresCompleteProfile: true },
     },
     {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('@/views/Admin/AdminView.vue'),
+      meta: { requiresAuth: true, requiresAdmin: true },
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/views/NotFoundView.vue'),
@@ -124,6 +130,15 @@ router.beforeEach(async (to, _from, next) => {
     if (uid && !userStore.profile) await userStore.fetchProfile(uid)
     if (uid && userStore.profile && !userStore.profile.profile_completed) {
       next({ name: 'onboarding' })
+      return
+    }
+  }
+
+  if (to.meta.requiresAdmin && authStore.isAuthenticated) {
+    const uid = authStore.user?.id
+    if (uid) await userStore.fetchProfile(uid)
+    if (!userStore.isAdmin) {
+      next({ name: 'dashboard' })
       return
     }
   }

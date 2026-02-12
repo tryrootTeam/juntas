@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "create-test-user": "node scripts/create-verified-test-user.js",
+    "test-design-system": "node scripts/test-design-system.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",

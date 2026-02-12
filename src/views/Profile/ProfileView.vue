@@ -2,11 +2,11 @@
   <div class="profile-page min-h-screen bg-cream pt-16">
     <AppHeader :is-public="false" />
 
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
-      <h1 class="text-3xl font-bold text-deepblue mb-8">Mi Perfil</h1>
+    <div class="container-juntas py-8">
+      <h1 class="font-display text-3xl font-bold text-charcoal mb-8">Mi Perfil</h1>
 
       <div v-if="userStore.loading && !userStore.profile" class="flex justify-center py-16">
-        <p class="text-deepblue-300">Cargando perfil...</p>
+        <p class="text-warm-grey">Cargando perfil...</p>
       </div>
 
       <template v-else-if="userStore.profile">

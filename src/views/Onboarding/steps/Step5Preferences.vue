@@ -5,11 +5,11 @@
     </div>
 
     <div>
-      <label for="step5-roommates" class="block text-sm font-medium text-deepblue mb-1">Número de compañeros preferido</label>
+      <label for="step5-roommates" class="block text-sm font-medium text-charcoal mb-1">Número de compañeros preferido</label>
       <select
         id="step5-roommates"
         v-model.number="form.preferred_roommates_count"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option :value="null">Selecciona</option>
         <option :value="1">1</option>
@@ -19,11 +19,11 @@
     </div>
 
     <div>
-      <label for="step5-age" class="block text-sm font-medium text-deepblue mb-1">Edad preferida de compañeros</label>
+      <label for="step5-age" class="block text-sm font-medium text-charcoal mb-1">Edad preferida de compañeros</label>
       <select
         id="step5-age"
         v-model="form.preferred_age"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="similar">Similar a la mía</option>
@@ -32,11 +32,11 @@
     </div>
 
     <div>
-      <label for="step5-children" class="block text-sm font-medium text-deepblue mb-1">Preferencia sobre hijos</label>
+      <label for="step5-children" class="block text-sm font-medium text-charcoal mb-1">Preferencia sobre hijos</label>
       <select
         id="step5-children"
         v-model="form.children_preference"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="with_children">Con hijos</option>
@@ -47,7 +47,7 @@
 
     <button
       type="submit"
-      class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-primary w-full disabled:opacity-60"
       :disabled="loading"
     >
       {{ loading ? 'Guardando…' : 'Siguiente' }}

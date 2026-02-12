@@ -6,7 +6,7 @@
       </div>
 
       <div>
-        <label for="login-email" class="block text-sm font-medium text-deepblue mb-1">Email</label>
+        <label for="login-email" class="block text-sm font-medium text-charcoal mb-1">Email</label>
         <input
           id="login-email"
           v-model="form.email"
@@ -15,7 +15,7 @@
           aria-required="true"
           aria-invalid="!!loginErrors.email"
           :aria-describedby="loginErrors.email ? 'login-email-error' : undefined"
-          class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+          class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
           :class="{ 'border-red-400': loginErrors.email }"
           placeholder="tu@email.com"
           @blur="validateField('email', form.email)"
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <label for="login-password" class="block text-sm font-medium text-deepblue mb-1">Contraseña</label>
+        <label for="login-password" class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
         <div class="relative">
           <input
             id="login-password"
@@ -37,7 +37,7 @@
             aria-required="true"
             aria-invalid="!!loginErrors.password"
             :aria-describedby="loginErrors.password ? 'login-password-error' : undefined"
-            class="w-full px-3 py-2 pr-10 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+            class="w-full px-3 py-2 pr-10 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
             :class="{ 'border-red-400': loginErrors.password }"
             placeholder="••••••••"
             @blur="validateField('password', form.password)"
@@ -46,7 +46,7 @@
           <button
             type="button"
             :aria-label="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
-            class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-deepblue-300 hover:text-deepblue focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota rounded"
+            class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-warm-grey hover:text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota rounded"
             @click="showPassword = !showPassword"
           >
             <span v-if="showPassword" aria-hidden="true">🙈</span>
@@ -57,13 +57,13 @@
           {{ loginErrors.password }}
         </p>
         <p class="mt-1 text-sm">
-          <RouterLink to="/forgot-password" class="text-terracota hover:underline">¿Olvidaste tu contraseña?</RouterLink>
+          <RouterLink to="/forgot-password" class="text-soft-terracota hover:underline">¿Olvidaste tu contraseña?</RouterLink>
         </p>
       </div>
 
       <button
         type="submit"
-        class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+        class="btn-primary w-full disabled:opacity-60"
         :disabled="loading"
         :aria-busy="loading"
       >
@@ -72,14 +72,14 @@
     </form>
 
     <div class="mt-6 flex items-center gap-3">
-      <span class="flex-1 h-px bg-cream-400" />
-      <span class="text-sm text-deepblue-300">o</span>
-      <span class="flex-1 h-px bg-cream-400" />
+      <span class="flex-1 h-px bg-warm-sand" />
+      <span class="text-sm text-warm-grey">o</span>
+      <span class="flex-1 h-px bg-warm-sand" />
     </div>
 
     <button
       type="button"
-      class="w-full mt-4 py-2.5 rounded-lg font-medium border border-deepblue-200 text-deepblue hover:bg-cream-100 transition flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="w-full mt-4 py-2.5 rounded-lg font-medium btn-secondary w-full transition flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota focus-visible:ring-offset-2 disabled:opacity-60"
       :disabled="loading"
       aria-label="Continuar con Google"
       @click="$emit('google')"

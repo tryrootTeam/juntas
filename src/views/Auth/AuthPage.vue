@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center p-8 bg-cream" role="main" aria-label="Iniciar sesión o registrarse">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8 border border-cream-400">
-      <h2 class="text-2xl font-bold text-deepblue mb-2">
+    <div class="w-full max-w-md bg-off-white rounded-xl shadow-lg p-8 border border-warm-sand ">
+      <h2 class="font-display text-2xl font-bold text-charcoal mb-2">
         {{ activeTab === 'register' ? 'Crear cuenta' : 'Iniciar sesión' }}
       </h2>
-      <p class="text-sm text-deepblue-300 mb-6">
+      <p class="text-sm text-warm-grey mb-6">
         {{ activeTab === 'register' ? 'Regístrate para encontrar tu junta.' : 'Accede a tu cuenta.' }}
       </p>
 
@@ -21,19 +21,19 @@
         @google="handleGoogle"
       />
 
-      <p class="mt-6 text-center text-sm text-deepblue-300">
+      <p class="mt-6 text-center text-sm text-warm-grey">
         <template v-if="activeTab === 'register'">
           ¿Ya tienes cuenta?
-          <RouterLink to="/login" class="text-terracota font-medium hover:underline">Iniciar sesión</RouterLink>
+          <RouterLink to="/login" class="text-soft-terracota font-medium hover:underline">Iniciar sesión</RouterLink>
         </template>
         <template v-else>
           ¿Primera vez?
-          <RouterLink to="/register" class="text-terracota font-medium hover:underline">Regístrate</RouterLink>
+          <RouterLink to="/register" class="text-soft-terracota font-medium hover:underline">Regístrate</RouterLink>
         </template>
       </p>
 
       <p class="mt-4 text-center">
-        <RouterLink to="/" class="text-deepblue-300 hover:text-terracota text-sm">← Volver al inicio</RouterLink>
+        <RouterLink to="/" class="text-warm-grey hover:text-soft-terracota text-sm">← Volver al inicio</RouterLink>
       </p>
     </div>
   </div>

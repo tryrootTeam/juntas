@@ -1,78 +1,78 @@
 <template>
   <section
-    class="bg-white rounded-2xl p-6 md:p-8 shadow-lg"
+    class="card-feature rounded-2xl p-6 md:p-8"
     aria-labelledby="details-heading"
   >
-    <h2 id="details-heading" class="text-xl font-bold text-deepblue mb-4">
+    <h2 id="details-heading" class="font-display text-xl font-bold text-charcoal mb-4">
       Detalles del perfil
     </h2>
     <dl class="grid gap-4 sm:grid-cols-2">
       <template v-if="profile?.occupation">
-        <dt class="text-deepblue-300 font-medium">Ocupación</dt>
-        <dd class="text-deepblue">{{ profile.occupation }}</dd>
+        <dt class="text-warm-grey font-medium">Ocupación</dt>
+        <dd class="text-charcoal">{{ profile.occupation }}</dd>
       </template>
       <template v-if="profile?.preferred_zones?.length">
-        <dt class="text-deepblue-300 font-medium">Zonas preferidas</dt>
-        <dd class="text-deepblue">{{ profile.preferred_zones.join(', ') }}</dd>
+        <dt class="text-warm-grey font-medium">Zonas preferidas</dt>
+        <dd class="text-charcoal">{{ profile.preferred_zones.join(', ') }}</dd>
       </template>
       <template v-if="profile?.monthly_budget != null">
-        <dt class="text-deepblue-300 font-medium">Presupuesto mensual</dt>
-        <dd class="text-deepblue">{{ profile.monthly_budget }} €</dd>
+        <dt class="text-warm-grey font-medium">Presupuesto mensual</dt>
+        <dd class="text-charcoal">{{ profile.monthly_budget }} €</dd>
       </template>
       <template v-if="profile?.work_schedule">
-        <dt class="text-deepblue-300 font-medium">Horario de trabajo</dt>
-        <dd class="text-deepblue">{{ workScheduleLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Horario de trabajo</dt>
+        <dd class="text-charcoal">{{ workScheduleLabel }}</dd>
       </template>
       <template v-if="profile?.works_from_home">
-        <dt class="text-deepblue-300 font-medium">Teletrabajo</dt>
-        <dd class="text-deepblue">{{ worksFromHomeLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Teletrabajo</dt>
+        <dd class="text-charcoal">{{ worksFromHomeLabel }}</dd>
       </template>
       <template v-if="profile?.time_at_home">
-        <dt class="text-deepblue-300 font-medium">Tiempo en casa</dt>
-        <dd class="text-deepblue">{{ timeAtHomeLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Tiempo en casa</dt>
+        <dd class="text-charcoal">{{ timeAtHomeLabel }}</dd>
       </template>
       <template v-if="profile?.cleanliness_level">
-        <dt class="text-deepblue-300 font-medium">Orden</dt>
-        <dd class="text-deepblue">{{ cleanlinessLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Orden</dt>
+        <dd class="text-charcoal">{{ cleanlinessLabel }}</dd>
       </template>
       <template v-if="profile?.noise_level">
-        <dt class="text-deepblue-300 font-medium">Nivel de ruido</dt>
-        <dd class="text-deepblue">{{ noiseLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Nivel de ruido</dt>
+        <dd class="text-charcoal">{{ noiseLabel }}</dd>
       </template>
       <template v-if="profile?.is_smoker">
-        <dt class="text-deepblue-300 font-medium">Fumadora</dt>
-        <dd class="text-deepblue">{{ profile.is_smoker === 'no' ? 'No' : profile.is_smoker === 'yes' ? 'Sí' : profile.is_smoker }}</dd>
+        <dt class="text-warm-grey font-medium">Fumadora</dt>
+        <dd class="text-charcoal">{{ profile.is_smoker === 'no' ? 'No' : profile.is_smoker === 'yes' ? 'Sí' : profile.is_smoker }}</dd>
       </template>
       <template v-if="profile?.has_children">
-        <dt class="text-deepblue-300 font-medium">Hijos</dt>
-        <dd class="text-deepblue">
+        <dt class="text-warm-grey font-medium">Hijos</dt>
+        <dd class="text-charcoal">
           Sí
           <span v-if="profile.children_ages?.length"> ({{ profile.children_ages.join(', ') }} años)</span>
           <span v-if="profile.custody_type"> · {{ custodyLabel }}</span>
         </dd>
       </template>
       <template v-else-if="profile?.has_children === false">
-        <dt class="text-deepblue-300 font-medium">Hijos</dt>
-        <dd class="text-deepblue">No</dd>
+        <dt class="text-warm-grey font-medium">Hijos</dt>
+        <dd class="text-charcoal">No</dd>
       </template>
       <template v-if="profile?.has_pets != null">
-        <dt class="text-deepblue-300 font-medium">Mascotas</dt>
-        <dd class="text-deepblue">{{ profile.has_pets ? (profile.pet_type || 'Sí') : 'No' }}</dd>
+        <dt class="text-warm-grey font-medium">Mascotas</dt>
+        <dd class="text-charcoal">{{ profile.has_pets ? (profile.pet_type || 'Sí') : 'No' }}</dd>
       </template>
       <template v-if="profile?.preferred_roommates_count != null">
-        <dt class="text-deepblue-300 font-medium">Compañeras de piso</dt>
-        <dd class="text-deepblue">{{ profile.preferred_roommates_count }}</dd>
+        <dt class="text-warm-grey font-medium">Compañeras de piso</dt>
+        <dd class="text-charcoal">{{ profile.preferred_roommates_count }}</dd>
       </template>
       <template v-if="profile?.preferred_age">
-        <dt class="text-deepblue-300 font-medium">Edad preferida</dt>
-        <dd class="text-deepblue">{{ preferredAgeLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Edad preferida</dt>
+        <dd class="text-charcoal">{{ preferredAgeLabel }}</dd>
       </template>
       <template v-if="profile?.children_preference">
-        <dt class="text-deepblue-300 font-medium">Preferencia hijos</dt>
-        <dd class="text-deepblue">{{ childrenPreferenceLabel }}</dd>
+        <dt class="text-warm-grey font-medium">Preferencia hijos</dt>
+        <dd class="text-charcoal">{{ childrenPreferenceLabel }}</dd>
       </template>
     </dl>
-    <p v-if="profile?.bio" class="mt-4 text-deepblue-300 border-t border-cream-400 pt-4">
+    <p v-if="profile?.bio" class="mt-4 text-warm-grey border-t border-warm-sand pt-4">
       {{ profile.bio }}
     </p>
   </section>

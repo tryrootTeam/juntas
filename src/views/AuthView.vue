@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center p-8 bg-cream">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8 border border-cream-400">
-      <h2 class="text-2xl font-bold text-deepblue mb-2">
+    <div class="w-full max-w-md bg-off-white rounded-xl shadow-lg p-8 border border-warm-sand ">
+      <h2 class="font-display text-2xl font-bold text-charcoal mb-2">
         {{ isRegister ? 'Crear cuenta' : 'Iniciar sesión' }}
       </h2>
-      <p class="text-sm text-deepblue-300 mb-6">
+      <p class="text-sm text-warm-grey mb-6">
         {{ isRegister ? 'Regístrate para encontrar tu junta.' : 'Accede a tu cuenta.' }}
       </p>
 
@@ -20,26 +20,26 @@
       <!-- Login -->
       <form v-if="!isRegister" class="space-y-4" @submit.prevent="handleLogin">
         <div>
-          <label for="login-email" class="block text-sm font-medium text-deepblue mb-1">Email</label>
+          <label for="login-email" class="block text-sm font-medium text-charcoal mb-1">Email</label>
           <input
             id="login-email"
             v-model="loginForm.email"
             type="email"
             autocomplete="email"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.loginEmail }"
             placeholder="tu@email.com"
           />
           <p v-if="errors.loginEmail" class="mt-1 text-sm text-red-600">{{ errors.loginEmail }}</p>
         </div>
         <div>
-          <label for="login-password" class="block text-sm font-medium text-deepblue mb-1">Contraseña</label>
+          <label for="login-password" class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
           <input
             id="login-password"
             v-model="loginForm.password"
             type="password"
             autocomplete="current-password"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.loginPassword }"
             placeholder="••••••••"
           />
@@ -47,7 +47,7 @@
         </div>
         <button
           type="submit"
-          class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition"
+          class="w-full py-2.5 rounded-lg text-white btn-primary w-full transition"
           :disabled="loading"
         >
           {{ loading ? 'Entrando…' : 'Entrar' }}
@@ -57,52 +57,52 @@
       <!-- Register -->
       <form v-else class="space-y-4" @submit.prevent="handleRegister">
         <div>
-          <label for="reg-name" class="block text-sm font-medium text-deepblue mb-1">Nombre</label>
+          <label for="reg-name" class="block text-sm font-medium text-charcoal mb-1">Nombre</label>
           <input
             id="reg-name"
             v-model="registerForm.name"
             type="text"
             autocomplete="name"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.regName }"
             placeholder="María García"
           />
           <p v-if="errors.regName" class="mt-1 text-sm text-red-600">{{ errors.regName }}</p>
         </div>
         <div>
-          <label for="reg-email" class="block text-sm font-medium text-deepblue mb-1">Email</label>
+          <label for="reg-email" class="block text-sm font-medium text-charcoal mb-1">Email</label>
           <input
             id="reg-email"
             v-model="registerForm.email"
             type="email"
             autocomplete="email"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.regEmail }"
             placeholder="tu@email.com"
           />
           <p v-if="errors.regEmail" class="mt-1 text-sm text-red-600">{{ errors.regEmail }}</p>
         </div>
         <div>
-          <label for="reg-phone" class="block text-sm font-medium text-deepblue mb-1">Teléfono</label>
+          <label for="reg-phone" class="block text-sm font-medium text-charcoal mb-1">Teléfono</label>
           <input
             id="reg-phone"
             v-model="registerForm.phone"
             type="tel"
             autocomplete="tel"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.regPhone }"
             placeholder="+34600123456"
           />
           <p v-if="errors.regPhone" class="mt-1 text-sm text-red-600">{{ errors.regPhone }}</p>
         </div>
         <div>
-          <label for="reg-password" class="block text-sm font-medium text-deepblue mb-1">Contraseña</label>
+          <label for="reg-password" class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
           <input
             id="reg-password"
             v-model="registerForm.password"
             type="password"
             autocomplete="new-password"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota"
             :class="{ 'border-red-400': errors.regPassword }"
             placeholder="Mín. 8 caracteres, mayúscula, minúscula y número"
           />
@@ -110,18 +110,18 @@
         </div>
         <div class="flex flex-col gap-2">
           <label class="flex items-start gap-2 cursor-pointer">
-            <input v-model="registerForm.terms" type="checkbox" class="mt-1 rounded border-cream-400 text-terracota focus:ring-terracota" />
-            <span class="text-sm text-deepblue">Acepto los <a href="#" class="text-terracota underline">términos y condiciones</a></span>
+            <input v-model="registerForm.terms" type="checkbox" class="mt-1 rounded border-warm-sand text-soft-terracota focus:ring-terracota" />
+            <span class="text-sm text-charcoal">Acepto los <a href="#" class="text-soft-terracota underline">términos y condiciones</a></span>
           </label>
           <label class="flex items-start gap-2 cursor-pointer">
-            <input v-model="registerForm.privacy" type="checkbox" class="mt-1 rounded border-cream-400 text-terracota focus:ring-terracota" />
-            <span class="text-sm text-deepblue">Acepto la <a href="#" class="text-terracota underline">política de privacidad</a></span>
+            <input v-model="registerForm.privacy" type="checkbox" class="mt-1 rounded border-warm-sand text-soft-terracota focus:ring-terracota" />
+            <span class="text-sm text-charcoal">Acepto la <a href="#" class="text-soft-terracota underline">política de privacidad</a></span>
           </label>
           <p v-if="errors.regCheckboxes" class="text-sm text-red-600">{{ errors.regCheckboxes }}</p>
         </div>
         <button
           type="submit"
-          class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition"
+          class="w-full py-2.5 rounded-lg text-white btn-primary w-full transition"
           :disabled="loading"
         >
           {{ loading ? 'Creando cuenta…' : 'Crear cuenta' }}
@@ -130,14 +130,14 @@
 
       <!-- Séparateur -->
       <div class="my-6 flex items-center gap-3">
-        <span class="flex-1 h-px bg-cream-400" />
-        <span class="text-sm text-deepblue-300">o</span>
-        <span class="flex-1 h-px bg-cream-400" />
+        <span class="flex-1 h-px bg-warm-sand" />
+        <span class="text-sm text-charcoal-300">o</span>
+        <span class="flex-1 h-px bg-warm-sand" />
       </div>
 
       <button
         type="button"
-        class="w-full py-2.5 rounded-lg font-medium border border-deepblue-200 text-deepblue hover:bg-cream-100 transition flex items-center justify-center gap-2"
+        class="w-full py-2.5 rounded-lg btn-secondary w-full transition flex items-center justify-center gap-2"
         :disabled="loading"
         @click="handleGoogle"
       >
@@ -145,19 +145,19 @@
         Continuar con Google
       </button>
 
-      <p class="mt-6 text-center text-sm text-deepblue-300">
+      <p class="mt-6 text-center text-sm text-charcoal-300">
         <template v-if="isRegister">
           ¿Ya tienes cuenta?
-          <RouterLink to="/login" class="text-terracota font-medium hover:underline">Iniciar sesión</RouterLink>
+          <RouterLink to="/login" class="text-soft-terracota font-medium hover:underline">Iniciar sesión</RouterLink>
         </template>
         <template v-else>
           ¿Primera vez?
-          <RouterLink to="/register" class="text-terracota font-medium hover:underline">Regístrate</RouterLink>
+          <RouterLink to="/register" class="text-soft-terracota font-medium hover:underline">Regístrate</RouterLink>
         </template>
       </p>
 
       <p class="mt-4 text-center">
-        <RouterLink to="/" class="text-deepblue-300 hover:text-terracota text-sm">← Volver al inicio</RouterLink>
+        <RouterLink to="/" class="text-charcoal-300 hover:text-soft-terracota text-sm">← Volver al inicio</RouterLink>
       </p>
     </div>
   </div>

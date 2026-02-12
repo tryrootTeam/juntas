@@ -5,13 +5,13 @@
     @scroll="onScroll"
   >
     <div v-if="loading" class="flex justify-center py-4">
-      <p class="text-sm text-deepblue-300">Cargando mensajes...</p>
+      <p class="text-sm text-warm-grey">Cargando mensajes...</p>
     </div>
     <template v-else>
       <button
         v-if="hasMore"
         type="button"
-        class="self-center text-sm text-sage hover:underline py-1"
+        class="self-center text-sm text-sage-green hover:underline py-1"
         @click="$emit('load-more')"
       >
         Cargar más
@@ -28,18 +28,18 @@
           :class="[
             'max-w-[80%] rounded-2xl px-4 py-2 break-words',
             msg.sender_id === currentUserId
-              ? 'bg-sage text-white rounded-br-md'
-              : 'bg-white border border-cream-400 text-deepblue rounded-bl-md',
+              ? 'bg-soft-terracota text-off-white rounded-br-md'
+              : 'bg-warm-sand/50 border border-warm-sand text-charcoal rounded-bl-md',
           ]"
         >
-          <p v-if="msg.sender_id !== currentUserId" class="text-xs font-medium text-deepblue-300 mb-0.5">
+          <p v-if="msg.sender_id !== currentUserId" class="text-xs font-medium text-warm-grey mb-0.5">
             {{ msg.sender?.display_name || 'Usuario' }}
           </p>
           <p class="text-sm">{{ msg.content }}</p>
           <p
             :class="[
               'text-xs mt-1',
-              msg.sender_id === currentUserId ? 'text-white/80' : 'text-deepblue-300',
+              msg.sender_id === currentUserId ? 'text-off-white/80' : 'text-warm-grey',
             ]"
           >
             {{ formatTime(msg.created_at) }}

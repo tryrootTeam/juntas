@@ -6,33 +6,33 @@
 
     <div>
       <label class="flex items-center gap-2 cursor-pointer">
-        <input v-model="form.has_children" type="checkbox" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
-        <span class="text-sm font-medium text-deepblue">¿Tienes hijos?</span>
+        <input v-model="form.has_children" type="checkbox" class="rounded border-warm-sand text-terracota focus:ring-terracota" />
+        <span class="text-sm font-medium text-charcoal">¿Tienes hijos?</span>
       </label>
     </div>
 
     <template v-if="form.has_children">
       <div>
-        <label class="block text-sm font-medium text-deepblue mb-2">Edades de los hijos</label>
+        <label class="block text-sm font-medium text-charcoal mb-2">Edades de los hijos</label>
         <div class="flex flex-wrap gap-2">
           <label
             v-for="age in childAgeOptions"
             :key="age"
             class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-colors"
-            :class="form.children_ages.includes(age) ? 'border-terracota bg-terracota-50' : 'border-cream-400'"
+            :class="form.children_ages.includes(age) ? 'border-soft-terracota bg-soft-terracota/20' : 'border-warm-sand'"
           >
-            <input v-model="form.children_ages" type="checkbox" :value="age" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
+            <input v-model="form.children_ages" type="checkbox" :value="age" class="rounded border-warm-sand text-terracota focus:ring-terracota" />
             <span>{{ age }} años</span>
           </label>
         </div>
         <p v-if="errors.children_ages" class="mt-1 text-sm text-red-600">{{ errors.children_ages }}</p>
       </div>
       <div>
-        <label for="step2-custody" class="block text-sm font-medium text-deepblue mb-1">Tipo de custodia</label>
+        <label for="step2-custody" class="block text-sm font-medium text-charcoal mb-1">Tipo de custodia</label>
         <select
           id="step2-custody"
           v-model="form.custody_type"
-          class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+          class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
           :class="{ 'border-red-400': errors.custody_type }"
         >
           <option value="">Selecciona</option>
@@ -47,16 +47,16 @@
 
     <div>
       <label class="flex items-center gap-2 cursor-pointer">
-        <input v-model="form.has_pets" type="checkbox" class="rounded border-cream-400 text-terracota focus:ring-terracota" />
-        <span class="text-sm font-medium text-deepblue">¿Tienes mascotas?</span>
+        <input v-model="form.has_pets" type="checkbox" class="rounded border-warm-sand text-terracota focus:ring-terracota" />
+        <span class="text-sm font-medium text-charcoal">¿Tienes mascotas?</span>
       </label>
     </div>
     <div v-if="form.has_pets">
-      <label for="step2-pet" class="block text-sm font-medium text-deepblue mb-1">Tipo de mascota</label>
+      <label for="step2-pet" class="block text-sm font-medium text-charcoal mb-1">Tipo de mascota</label>
       <select
         id="step2-pet"
         v-model="form.pet_type"
-        class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+        class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
       >
         <option value="">Selecciona</option>
         <option value="dog">Perro</option>
@@ -67,7 +67,7 @@
 
     <button
       type="submit"
-      class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-primary w-full disabled:opacity-60"
       :disabled="loading"
     >
       {{ loading ? 'Guardando…' : 'Siguiente' }}

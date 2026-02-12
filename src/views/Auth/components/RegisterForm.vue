@@ -6,7 +6,7 @@
       </div>
 
       <div>
-        <label for="reg-name" class="block text-sm font-medium text-deepblue mb-1">Nombre</label>
+        <label for="reg-name" class="block text-sm font-medium text-charcoal mb-1">Nombre</label>
         <input
           id="reg-name"
           v-model="form.name"
@@ -15,7 +15,7 @@
           aria-required="true"
           aria-invalid="!!registerErrors.name"
           :aria-describedby="registerErrors.name ? 'reg-name-error' : undefined"
-          class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+          class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
           :class="{ 'border-red-400': registerErrors.name }"
           placeholder="María García"
           @blur="validateField('name', form.name)"
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <label for="reg-email" class="block text-sm font-medium text-deepblue mb-1">Email</label>
+        <label for="reg-email" class="block text-sm font-medium text-charcoal mb-1">Email</label>
         <input
           id="reg-email"
           v-model="form.email"
@@ -36,7 +36,7 @@
           aria-required="true"
           aria-invalid="!!registerErrors.email"
           :aria-describedby="registerErrors.email ? 'reg-email-error' : undefined"
-          class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+          class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
           :class="{ 'border-red-400': registerErrors.email }"
           placeholder="tu@email.com"
           @blur="validateField('email', form.email)"
@@ -48,7 +48,7 @@
       </div>
 
       <div>
-        <label for="reg-phone" class="block text-sm font-medium text-deepblue mb-1">Teléfono</label>
+        <label for="reg-phone" class="block text-sm font-medium text-charcoal mb-1">Teléfono</label>
         <input
           id="reg-phone"
           v-model="form.phone"
@@ -57,7 +57,7 @@
           aria-required="true"
           aria-invalid="!!registerErrors.phone"
           :aria-describedby="registerErrors.phone ? 'reg-phone-error' : undefined"
-          class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+          class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
           :class="{ 'border-red-400': registerErrors.phone }"
           placeholder="+34600123456"
           @blur="validateField('phone', form.phone)"
@@ -69,7 +69,7 @@
       </div>
 
       <div>
-        <label for="reg-password" class="block text-sm font-medium text-deepblue mb-1">Contraseña</label>
+        <label for="reg-password" class="block text-sm font-medium text-charcoal mb-1">Contraseña</label>
         <div class="relative">
           <input
             id="reg-password"
@@ -79,7 +79,7 @@
             aria-required="true"
             aria-invalid="!!registerErrors.password"
             :aria-describedby="passwordStrengthId"
-            class="w-full px-3 py-2 pr-10 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+            class="w-full px-3 py-2 pr-10 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none"
             :class="{ 'border-red-400': registerErrors.password }"
             placeholder="Mín. 8 caracteres, mayúscula, minúscula y número"
             @blur="validateField('password', form.password)"
@@ -88,7 +88,7 @@
           <button
             type="button"
             :aria-label="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
-            class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-deepblue-300 hover:text-deepblue focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota rounded"
+            class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-warm-grey hover:text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota rounded"
             @click="showPassword = !showPassword"
           >
             <span v-if="showPassword" aria-hidden="true">🙈</span>
@@ -96,7 +96,7 @@
           </button>
         </div>
         <div :id="passwordStrengthId" class="mt-1 flex items-center gap-2" role="status" aria-live="polite">
-          <span class="text-xs text-deepblue-300">Fortaleza:</span>
+          <span class="text-xs text-warm-grey">Fortaleza:</span>
           <span
             class="text-xs font-medium"
             :class="{
@@ -132,10 +132,10 @@
           <input
             v-model="form.gender"
             type="checkbox"
-            class="mt-1 rounded border-cream-400 text-terracota focus:ring-terracota focus:outline-none"
+            class="mt-1 rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota focus:outline-none"
             aria-describedby="gender-note"
           />
-          <span id="gender-note" class="text-sm text-deepblue">
+          <span id="gender-note" class="text-sm text-charcoal">
             Declaro que me identifico con el género que mejor me representa (espacio inclusivo).
           </span>
         </label>
@@ -143,24 +143,24 @@
           <input
             v-model="form.terms"
             type="checkbox"
-            class="mt-1 rounded border-cream-400 text-terracota focus:ring-terracota focus:outline-none"
+            class="mt-1 rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota focus:outline-none"
             aria-required="true"
             aria-invalid="!!registerErrors.checkboxes"
           />
-          <span class="text-sm text-deepblue">
-            Acepto los <a href="#" class="text-terracota underline">términos y condiciones</a>
+          <span class="text-sm text-charcoal">
+            Acepto los <a href="#" class="text-soft-terracota underline">términos y condiciones</a>
           </span>
         </label>
         <label class="flex items-start gap-2 cursor-pointer">
           <input
             v-model="form.privacy"
             type="checkbox"
-            class="mt-1 rounded border-cream-400 text-terracota focus:ring-terracota focus:outline-none"
+            class="mt-1 rounded border-warm-sand text-soft-terracota focus:ring-soft-terracota focus:outline-none"
             aria-required="true"
             aria-invalid="!!registerErrors.checkboxes"
           />
-          <span class="text-sm text-deepblue">
-            Acepto la <a href="#" class="text-terracota underline">política de privacidad</a>
+          <span class="text-sm text-charcoal">
+            Acepto la <a href="#" class="text-soft-terracota underline">política de privacidad</a>
           </span>
         </label>
         <p v-if="registerErrors.checkboxes" class="text-sm text-red-600" role="alert">
@@ -168,13 +168,13 @@
         </p>
       </div>
 
-      <p class="text-xs text-deepblue-300">
+      <p class="text-xs text-warm-grey">
         Juntas es un espacio seguro e inclusivo. Respetamos todas las identidades.
       </p>
 
       <button
         type="submit"
-        class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+        class="btn-primary w-full disabled:opacity-60"
         :disabled="loading"
         :aria-busy="loading"
       >
@@ -183,14 +183,14 @@
     </form>
 
     <div class="mt-6 flex items-center gap-3">
-      <span class="flex-1 h-px bg-cream-400" />
-      <span class="text-sm text-deepblue-300">o</span>
-      <span class="flex-1 h-px bg-cream-400" />
+      <span class="flex-1 h-px bg-warm-sand" />
+      <span class="text-sm text-warm-grey">o</span>
+      <span class="flex-1 h-px bg-warm-sand" />
     </div>
 
     <button
       type="button"
-      class="w-full mt-4 py-2.5 rounded-lg font-medium border border-deepblue-200 text-deepblue hover:bg-cream-100 transition flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 disabled:opacity-60"
+      class="btn-secondary w-full mt-4 disabled:opacity-60"
       :disabled="loading"
       aria-label="Continuar con Google"
       @click="$emit('google')"
@@ -240,7 +240,7 @@ const strengthLabel = computed(() => {
 
 function strengthBarClass(index) {
   const level = { weak: 0, medium: 1, strong: 2 }[strength.value] ?? 0
-  if (index > level) return 'bg-cream-400'
+  if (index > level) return 'bg-warm-sand'
   if (strength.value === 'weak') return 'bg-red-500'
   if (strength.value === 'medium') return 'bg-amber-500'
   return 'bg-green-500'

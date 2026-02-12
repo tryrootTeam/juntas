@@ -1,23 +1,34 @@
 # Configuration Supabase pour l’auth (login, registro, mot de passe oublié)
 
-Pour que **login**, **registro**, **Google OAuth** et **mot de passe oublié** fonctionnent, il faut configurer Supabase côté Dashboard.
+Pour que **login**, **registro**, **Google OAuth** et **mot de passe oublié** fonctionnent, il faut configurer les URLs de redirection.
 
 ---
 
 ## 1. URLs de redirection (obligatoire)
 
-Sans ça, le lien dans l’email « Réinitialiser le mot de passe » et le retour Google OAuth ne redirigeront pas vers ton app.
+Sans ça, le retour Google OAuth affiche **« requested path is invalid »** et le lien « Réinitialiser le mot de passe » ne redirige pas vers ton app.
+
+### A. Supabase en local (`supabase start`)
+
+Dans **`supabase/config.toml`** la section `[auth]` doit contenir :
+
+- **`site_url`** : l’URL de ton front (ex. `http://localhost:5173`)
+- **`additional_redirect_urls`** : les URLs de callback exactes, par ex. :
+  - `http://localhost:5173/auth/callback`
+  - `http://localhost:5173/reset-password`
+
+Si tu utilises un autre port (ex. 3000), adapte les URLs. Après modification, redémarre : `supabase stop` puis `supabase start`.
+
+### B. Supabase hébergé (Dashboard supabase.com)
 
 1. Ouvre le **Dashboard Supabase** → ton projet.
 2. Va dans **Authentication** → **URL Configuration**.
-3. **Site URL** : mets l’URL de ton site (ex. en prod `https://juntasbyroot.netlify.app`). Ne pas mettre d’URL relative.
+3. **Site URL** : mets l’URL de ton site (ex. en prod `https://juntasbyroot.netlify.app`). Pour tester en local avec le projet hébergé, tu peux mettre `http://localhost:5173`.
 4. Dans **Redirect URLs**, ajoute les URLs autorisées, une par ligne, par exemple :
-   - En local : `http://localhost:5173/reset-password` et `http://localhost:5173/auth/callback`
+   - En local : `http://localhost:5173/auth/callback` et `http://localhost:5173/reset-password`
    - En prod : `https://juntasbyroot.netlify.app/auth/callback` et `https://juntasbyroot.netlify.app/reset-password`
 
-**Important :** Toujours inclure `https://` (ou `http://` en local). Si tu mets seulement le domaine sans protocole, Supabase peut rediriger vers son propre domaine avec ce texte en chemin → page blanche et erreur « requested path is invalid ».
-
-Supabase n’acceptera que les redirections vers ces URLs. Si tu oublies `https://juntasbyroot.netlify.app/reset-password`, le lien « Réinitialiser le mot de passe » ne fonctionnera pas après clic.
+**Important :** Toujours inclure `https://` (ou `http://` en local). Si une URL de callback manque, Supabase renvoie « requested path is invalid » après le login Google.
 
 ---
 

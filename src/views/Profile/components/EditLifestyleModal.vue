@@ -1,12 +1,12 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deepblue/50" @click.self="$emit('close')">
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/50" @click.self="$emit('close')">
     <div class="bg-white rounded-xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto" role="dialog" aria-labelledby="modal-lifestyle-title">
       <div class="p-6">
-        <h2 id="modal-lifestyle-title" class="text-xl font-semibold text-deepblue mb-4">Estilo de vida</h2>
+        <h2 id="modal-lifestyle-title" class="text-xl font-semibold text-charcoal mb-4">Estilo de vida</h2>
         <form class="space-y-4" @submit.prevent="handleSubmit">
           <div>
-            <label for="edit-schedule" class="block text-sm font-medium text-deepblue mb-1">Horario de trabajo</label>
-            <select id="edit-schedule" v-model="form.work_schedule" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-schedule" class="block text-sm font-medium text-charcoal mb-1">Horario de trabajo</label>
+            <select id="edit-schedule" v-model="form.work_schedule" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="morning">Mañanas</option>
               <option value="afternoon">Tardes</option>
@@ -15,8 +15,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-wfh" class="block text-sm font-medium text-deepblue mb-1">¿Trabajas desde casa?</label>
-            <select id="edit-wfh" v-model="form.works_from_home" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-wfh" class="block text-sm font-medium text-charcoal mb-1">¿Trabajas desde casa?</label>
+            <select id="edit-wfh" v-model="form.works_from_home" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="full">Sí, siempre</option>
               <option value="hybrid">Híbrido</option>
@@ -24,8 +24,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-time" class="block text-sm font-medium text-deepblue mb-1">Tiempo en casa</label>
-            <select id="edit-time" v-model="form.time_at_home" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-time" class="block text-sm font-medium text-charcoal mb-1">Tiempo en casa</label>
+            <select id="edit-time" v-model="form.time_at_home" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="low">Poco</option>
               <option value="medium">Medio</option>
@@ -33,8 +33,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-cleanliness" class="block text-sm font-medium text-deepblue mb-1">Nivel de orden</label>
-            <select id="edit-cleanliness" v-model="form.cleanliness_level" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-cleanliness" class="block text-sm font-medium text-charcoal mb-1">Nivel de orden</label>
+            <select id="edit-cleanliness" v-model="form.cleanliness_level" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="minimal">Mínimo</option>
               <option value="normal">Normal</option>
@@ -42,8 +42,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-noise" class="block text-sm font-medium text-deepblue mb-1">Nivel de ruido</label>
-            <select id="edit-noise" v-model="form.noise_level" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-noise" class="block text-sm font-medium text-charcoal mb-1">Nivel de ruido</label>
+            <select id="edit-noise" v-model="form.noise_level" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="quiet">Tranquilo</option>
               <option value="moderate">Moderado</option>
@@ -51,8 +51,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-smoker" class="block text-sm font-medium text-deepblue mb-1">¿Fumas?</label>
-            <select id="edit-smoker" v-model="form.is_smoker" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-smoker" class="block text-sm font-medium text-charcoal mb-1">¿Fumas?</label>
+            <select id="edit-smoker" v-model="form.is_smoker" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="no">No</option>
               <option value="yes">Sí</option>
@@ -60,8 +60,8 @@
             </select>
           </div>
           <div>
-            <label for="edit-roommates" class="block text-sm font-medium text-deepblue mb-1">Número de compañeros preferido</label>
-            <select id="edit-roommates" v-model.number="form.preferred_roommates_count" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-roommates" class="block text-sm font-medium text-charcoal mb-1">Número de compañeros preferido</label>
+            <select id="edit-roommates" v-model.number="form.preferred_roommates_count" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option :value="null">Selecciona</option>
               <option :value="1">1</option>
               <option :value="2">2</option>
@@ -69,16 +69,16 @@
             </select>
           </div>
           <div>
-            <label for="edit-age-pref" class="block text-sm font-medium text-deepblue mb-1">Edad preferida de compañeros</label>
-            <select id="edit-age-pref" v-model="form.preferred_age" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-age-pref" class="block text-sm font-medium text-charcoal mb-1">Edad preferida de compañeros</label>
+            <select id="edit-age-pref" v-model="form.preferred_age" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="similar">Similar a la mía</option>
               <option value="any">Cualquiera</option>
             </select>
           </div>
           <div>
-            <label for="edit-children-pref" class="block text-sm font-medium text-deepblue mb-1">Preferencia sobre hijos</label>
-            <select id="edit-children-pref" v-model="form.children_preference" class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none">
+            <label for="edit-children-pref" class="block text-sm font-medium text-charcoal mb-1">Preferencia sobre hijos</label>
+            <select id="edit-children-pref" v-model="form.children_preference" class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota focus:outline-none">
               <option value="">Selecciona</option>
               <option value="with_children">Con hijos</option>
               <option value="without_children">Sin hijos</option>
@@ -86,10 +86,10 @@
             </select>
           </div>
           <div class="flex gap-3 pt-2">
-            <button type="button" class="flex-1 py-2.5 rounded-lg font-medium border border-cream-400 text-deepblue hover:bg-cream-100 transition" @click="$emit('close')">
+            <button type="button" class="btn-secondary flex-1" @click="$emit('close')">
               Cancelar
             </button>
-            <button type="submit" class="flex-1 py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota disabled:opacity-60" :disabled="loading">
+            <button type="submit" class="btn-primary flex-1 disabled:opacity-60" :disabled="loading">
               {{ loading ? 'Guardando…' : 'Guardar' }}
             </button>
           </div>

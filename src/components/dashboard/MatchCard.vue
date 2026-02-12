@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-white rounded-xl border border-cream-400 shadow-sm overflow-hidden flex flex-col">
+  <article class="card-feature rounded-xl overflow-hidden flex flex-col p-0">
     <div class="p-4 flex items-start gap-4">
       <div
         class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white flex-shrink-0"
@@ -8,16 +8,13 @@
         {{ initial }}
       </div>
       <div class="flex-1 min-w-0">
-        <h3 class="font-semibold text-deepblue truncate">
+        <h3 class="font-display font-semibold text-charcoal truncate">
           {{ match.name || 'Sin nombre' }}{{ match.age != null ? `, ${match.age}` : '' }}
         </h3>
-        <p v-if="match.occupation" class="text-sm text-deepblue-300 truncate">{{ match.occupation }}</p>
-        <p v-if="zone" class="text-sm text-deepblue-300 truncate">{{ zone }}</p>
+        <p v-if="match.occupation" class="text-sm text-warm-grey truncate">{{ match.occupation }}</p>
+        <p v-if="zone" class="text-sm text-warm-grey truncate">{{ zone }}</p>
         <div class="flex items-center gap-2 mt-2">
-          <span
-            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
-            :class="scoreBadgeClass"
-          >
+          <span class="badge-verified">
             {{ match.compatibility_score ?? 0 }}% compatibilidad
           </span>
         </div>
@@ -25,7 +22,7 @@
           <span
             v-for="tag in tags"
             :key="tag"
-            class="px-2 py-0.5 rounded-md text-xs bg-cream-200 text-deepblue-300"
+            class="px-2 py-0.5 rounded-md text-xs bg-warm-sand/60 text-warm-grey"
           >
             {{ tag }}
           </span>
@@ -35,14 +32,14 @@
     <div class="mt-auto p-4 pt-0 flex gap-2">
       <button
         type="button"
-        class="flex-1 px-4 py-2 rounded-lg font-medium text-sm bg-sage text-white hover:bg-sage-600 transition"
+        class="btn-primary flex-1 text-sm py-2"
         @click="$emit('view')"
       >
         Ver perfil
       </button>
       <button
         type="button"
-        class="px-4 py-2 rounded-lg font-medium text-sm border border-deepblue-200 text-deepblue-300 hover:bg-cream-200 transition"
+        class="btn-secondary px-4 py-2 text-sm"
         @click="$emit('pass')"
       >
         Pasar
@@ -105,12 +102,5 @@ const tags = computed(() => {
   return t
 })
 
-const avatarClass = computed(() => 'bg-gradient-to-br from-sage to-deepblue')
-
-const scoreBadgeClass = computed(() => {
-  const s = props.match.compatibility_score ?? 0
-  if (s >= 80) return 'bg-sage/20 text-sage-700'
-  if (s >= 60) return 'bg-deepblue/10 text-deepblue'
-  return 'bg-cream-300 text-deepblue-300'
-})
+const avatarClass = computed(() => 'bg-gradient-to-br from-sage-green to-deep-plum')
 </script>

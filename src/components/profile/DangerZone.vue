@@ -1,10 +1,10 @@
 <template>
-  <section class="bg-white rounded-xl border border-red-200 overflow-hidden">
+  <section class="rounded-xl border border-red-200 overflow-hidden bg-off-white shadow-md">
     <div class="px-6 py-4 border-b border-red-200 bg-red-50/50">
-      <h3 class="text-lg font-semibold text-deepblue">Zona de peligro</h3>
+      <h3 class="font-display text-lg font-semibold text-charcoal">Zona de peligro</h3>
     </div>
     <div class="px-6 py-4">
-      <p class="text-sm text-deepblue-300 mb-4">
+      <p class="text-sm text-warm-grey mb-4">
         Si eliminas tu cuenta, se borrarán todos tus datos de forma permanente. Esta acción no se puede deshacer.
       </p>
       <button

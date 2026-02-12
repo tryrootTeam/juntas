@@ -1,14 +1,14 @@
 <template>
   <div class="min-h-screen flex flex-col bg-cream">
     <main class="flex-1 w-full max-w-lg mx-auto px-4 py-6 sm:py-8 sm:px-6">
-      <h1 class="text-2xl font-bold text-deepblue mb-2">Completa tu perfil</h1>
-      <p class="text-sm text-deepblue-300 mb-4 sm:mb-6">Paso a paso, así encontramos mejor tu compañero de piso.</p>
+      <h1 class="font-display text-2xl font-bold text-charcoal mb-2">Completa tu perfil</h1>
+      <p class="text-sm text-warm-grey mb-4 sm:mb-6">Paso a paso, así encontramos mejor tu compañero de piso.</p>
 
       <ProgressBar :current-step="store.currentStep" class="mb-6 sm:mb-8" />
 
-      <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-cream-400">
+      <div class="card-feature rounded-xl p-6 sm:p-8">
         <template v-if="store.loading && !store.formData.name">
-          <p class="text-deepblue-300">Cargando…</p>
+          <p class="text-warm-grey">Cargando…</p>
         </template>
         <template v-else>
           <Step1AboutYou
@@ -58,7 +58,7 @@
       <div v-if="store.currentStep > 1 && store.currentStep < 6" class="mt-4 text-center">
         <button
           type="button"
-          class="text-sm text-deepblue-300 hover:text-terracota focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota rounded"
+          class="text-sm text-warm-grey hover:text-soft-terracota focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota rounded"
           :disabled="store.loading"
           @click="goBack"
         >

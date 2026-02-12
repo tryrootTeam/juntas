@@ -1,13 +1,13 @@
 <template>
-  <div class="dashboard-page min-h-screen bg-cream pt-16">
+  <div class="dashboard-page min-h-screen bg-gradient-to-b from-off-white via-cream to-warm-sand/20 pt-16">
     <AppHeader :is-public="false" />
 
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <div class="container-juntas py-8">
       <header class="mb-8">
-        <h1 class="text-3xl font-bold text-deepblue">
+        <h1 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-charcoal">
           ¡Hola {{ userName }}!
         </h1>
-        <p class="text-deepblue-300 mt-1">Tus matches compatibles</p>
+        <p class="text-warm-grey mt-1 font-body">Tus matches compatibles</p>
       </header>
 
       <VerificationBanner
@@ -25,10 +25,10 @@
           type="button"
           :data-testid="`filter-${opt.value}`"
           :class="[
-            'px-4 py-2 rounded-lg text-sm font-medium transition',
+            'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300',
             activeFilter === opt.value
-              ? 'bg-sage text-white'
-              : 'bg-white border border-cream-400 text-deepblue hover:bg-cream-100',
+              ? 'bg-sage-green text-off-white shadow-soft'
+              : 'bg-off-white border-2 border-warm-sand text-charcoal hover:border-charcoal/20 hover:bg-warm-sand/30 hover:shadow-soft',
           ]"
           @click="activeFilter = opt.value"
         >
@@ -37,14 +37,14 @@
       </div>
 
       <div v-if="matchesStore.loading" class="flex justify-center py-16">
-        <p class="text-deepblue-300">Cargando matches...</p>
+        <p class="text-warm-grey font-body">Cargando matches...</p>
       </div>
 
-      <div v-else-if="matchesStore.error" class="bg-white rounded-xl p-6 border border-red-200">
-        <p class="text-terracota font-medium">{{ matchesStore.error }}</p>
+      <div v-else-if="matchesStore.error" class="card-feature rounded-xl p-6 border border-red-200">
+        <p class="text-soft-terracota font-medium">{{ matchesStore.error }}</p>
       </div>
 
-      <div v-else-if="filteredMatches.length === 0" class="bg-white rounded-xl border border-cream-400">
+      <div v-else-if="filteredMatches.length === 0" class="card-feature rounded-xl">
         <EmptyState
           :filter="activeFilter"
           @reset-filter="activeFilter = 'all'"

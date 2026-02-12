@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { supabase } from '@/services/supabase'
 import { getMyProfile, updateMyProfile as updateMyProfileRpc } from '@/services/profile'
 
@@ -63,10 +63,13 @@ export const useUserStore = defineStore('user', () => {
     profile.value = null
   }
 
+  const isAdmin = computed(() => profile.value?.role === 'admin')
+
   return {
     profile,
     loading,
     error,
+    isAdmin,
     fetchProfile,
     fetchMyProfile,
     updateProfile,

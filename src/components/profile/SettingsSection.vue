@@ -1,40 +1,40 @@
 <template>
-  <section class="bg-white rounded-xl border border-cream-400 overflow-hidden">
-    <div class="px-6 py-4 border-b border-cream-400">
-      <h3 class="text-lg font-semibold text-deepblue">Ajustes</h3>
+  <section class="card-feature rounded-xl overflow-hidden">
+    <div class="px-6 py-4 border-b border-warm-sand">
+      <h3 class="font-display text-lg font-semibold text-charcoal">Ajustes</h3>
     </div>
     <div class="px-6 py-4 space-y-4">
-      <p class="text-sm text-deepblue-300">Cambiar tu contraseña</p>
+      <p class="text-sm text-warm-grey">Cambiar tu contraseña</p>
       <form class="space-y-3 max-w-sm" @submit.prevent="handleChangePassword">
-        <div v-if="message" class="p-3 rounded-lg text-sm" :class="messageSuccess ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-700'" role="alert">
+        <div v-if="message" class="p-3 rounded-lg text-sm" :class="messageSuccess ? 'bg-sage-green/15 text-sage-green' : 'bg-red-50 text-red-700'" role="alert">
           {{ message }}
         </div>
         <div>
-          <label for="profile-new-password" class="block text-sm font-medium text-deepblue mb-1">Nueva contraseña</label>
+          <label for="profile-new-password" class="block text-sm font-medium text-charcoal mb-1">Nueva contraseña</label>
           <input
             id="profile-new-password"
             v-model="newPassword"
             type="password"
             autocomplete="new-password"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-sage-green focus:border-sage-green focus:outline-none"
             placeholder="Mín. 6 caracteres"
           />
         </div>
         <div>
-          <label for="profile-confirm-password" class="block text-sm font-medium text-deepblue mb-1">Confirmar contraseña</label>
+          <label for="profile-confirm-password" class="block text-sm font-medium text-charcoal mb-1">Confirmar contraseña</label>
           <input
             id="profile-confirm-password"
             v-model="confirmPassword"
             type="password"
             autocomplete="new-password"
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota focus:outline-none"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-sage-green focus:border-sage-green focus:outline-none"
             placeholder="Repite la contraseña"
           />
           <p v-if="confirmError" class="mt-1 text-sm text-red-600">{{ confirmError }}</p>
         </div>
         <button
           type="submit"
-          class="px-4 py-2 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota disabled:opacity-60"
+          class="btn-primary"
           :disabled="loading"
         >
           {{ loading ? 'Guardando…' : 'Cambiar contraseña' }}

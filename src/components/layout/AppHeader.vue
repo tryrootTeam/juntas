@@ -5,18 +5,18 @@
       isScrolled ? 'shadow-md' : 'shadow-none',
     ]"
   >
-    <nav class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+    <nav class="container-juntas flex items-center justify-between py-3 md:py-4">
       <RouterLink to="/" class="flex items-center gap-2">
-        <span class="h-8 w-8 rounded-full bg-terracota flex items-center justify-center text-sm font-bold text-cream-50">
+        <span class="h-8 w-8 rounded-full bg-soft-terracota flex items-center justify-center text-sm font-bold text-off-white">
           J
         </span>
-        <span class="text-lg font-bold tracking-tight text-deepblue">
+        <span class="text-lg font-bold tracking-tight text-deep-plum">
           Juntas
         </span>
       </RouterLink>
 
       <button
-        class="inline-flex items-center justify-center rounded-md border border-transparent p-2 text-deepblue hover:bg-cream-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2 md:hidden"
+        class="inline-flex items-center justify-center rounded-md border border-transparent p-2 text-charcoal hover:bg-warm-sand focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota focus-visible:ring-offset-2 md:hidden"
         type="button"
         :aria-expanded="mobileOpen ? 'true' : 'false'"
         aria-controls="mobile-menu"
@@ -60,7 +60,7 @@
         <button
           v-if="isPublic"
           type="button"
-          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
           @click="scrollToSection('como-funciona')"
         >
           Cómo funciona
@@ -68,7 +68,7 @@
         <button
           v-if="isPublic"
           type="button"
-          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
           @click="scrollToSection('testimonios')"
         >
           Testimonios
@@ -76,27 +76,34 @@
         <RouterLink
           v-if="!isPublic"
           to="/dashboard"
-          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
         >
           Dashboard
         </RouterLink>
         <RouterLink
           v-if="!isPublic"
           to="/profile"
-          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
         >
           Mi Perfil
         </RouterLink>
         <RouterLink
           v-if="!isPublic"
           to="/chat"
-          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
         >
           Chat
         </RouterLink>
         <RouterLink
+          v-if="!isPublic && isAdmin"
+          to="/admin"
+          class="text-sm font-medium text-charcoal hover:text-soft-terracota transition"
+        >
+          Admin
+        </RouterLink>
+        <RouterLink
           :to="isPublic ? '/auth' : '/dashboard'"
-          class="inline-flex items-center justify-center rounded-full border border-terracota-500 px-4 py-2 text-sm font-semibold text-terracota-600 hover:bg-terracota-500 hover:text-cream-50 transition"
+          class="inline-flex items-center justify-center rounded-full border-2 border-soft-terracota px-4 py-2 text-sm font-semibold text-soft-terracota hover:bg-soft-terracota hover:text-off-white transition"
         >
           Entrar
         </RouterLink>
@@ -112,7 +119,7 @@
         <button
           v-if="isPublic"
           type="button"
-          class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
           @click="handleMobileClick('como-funciona')"
         >
           Cómo funciona
@@ -120,7 +127,7 @@
         <button
           v-if="isPublic"
           type="button"
-          class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
           @click="handleMobileClick('testimonios')"
         >
           Testimonios
@@ -128,7 +135,7 @@
         <RouterLink
           v-if="!isPublic"
           to="/dashboard"
-          class="block rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          class="block rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
           @click="mobileOpen = false"
         >
           Dashboard
@@ -136,7 +143,7 @@
         <RouterLink
           v-if="!isPublic"
           to="/profile"
-          class="block rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          class="block rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
           @click="mobileOpen = false"
         >
           Mi Perfil
@@ -144,14 +151,22 @@
         <RouterLink
           v-if="!isPublic"
           to="/chat"
-          class="block rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          class="block rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
           @click="mobileOpen = false"
         >
           Chat
         </RouterLink>
         <RouterLink
+          v-if="!isPublic && isAdmin"
+          to="/admin"
+          class="block rounded-md px-3 py-2 text-base font-medium text-charcoal hover:bg-warm-sand"
+          @click="mobileOpen = false"
+        >
+          Admin
+        </RouterLink>
+        <RouterLink
           :to="isPublic ? '/auth' : '/dashboard'"
-          class="block rounded-md px-3 py-2 text-base font-semibold text-cream-50 bg-terracota hover:bg-terracota-600 text-center"
+          class="block rounded-md px-3 py-2 text-base font-semibold text-off-white bg-soft-terracota hover:bg-terracota-600 text-center"
           @click="mobileOpen = false"
         >
           Entrar
@@ -162,9 +177,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useScrollHeader } from '@/composables/useScrollHeader'
 import { useSmoothScroll } from '@/composables/useSmoothScroll'
+import { useUserStore } from '@/stores/user'
 
 defineProps({
   isPublic: {
@@ -172,6 +188,9 @@ defineProps({
     default: false,
   },
 })
+
+const userStore = useUserStore()
+const isAdmin = computed(() => userStore.isAdmin)
 
 const mobileOpen = ref(false)
 const { isScrolled } = useScrollHeader()

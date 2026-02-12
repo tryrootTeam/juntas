@@ -1,21 +1,21 @@
 <template>
-  <section class="bg-white rounded-xl border border-cream-400 p-6 flex flex-col sm:flex-row items-center gap-6">
+  <section class="card-feature p-6 flex flex-col sm:flex-row items-center gap-6">
     <div class="relative shrink-0">
       <img
         v-if="profile?.photo_url"
         :src="profile.photo_url"
         alt="Foto de perfil"
-        class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-cream-400"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-warm-sand"
       />
       <div
         v-else
-        class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-sage-200 flex items-center justify-center text-3xl font-bold text-sage-700 border-2 border-cream-400"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-sage-green/15 flex items-center justify-center font-display text-3xl font-bold text-sage-green border-2 border-warm-sand"
       >
         {{ initial }}
       </div>
       <button
         type="button"
-        class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-terracota text-white flex items-center justify-center shadow hover:bg-terracota-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2"
+        class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-soft-terracota text-off-white flex items-center justify-center shadow-soft hover:bg-terracota-600 transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota focus-visible:ring-offset-2"
         aria-label="Editar foto"
         @click="$emit('edit')"
       >
@@ -25,10 +25,10 @@
       </button>
     </div>
     <div class="text-center sm:text-left">
-      <h2 class="text-xl font-semibold text-deepblue">
+      <h2 class="font-display text-xl font-semibold text-charcoal">
         {{ profile?.display_name || profile?.name || 'Usuario' }}
       </h2>
-      <p v-if="profile?.occupation" class="text-deepblue-300 text-sm mt-0.5">
+      <p v-if="profile?.occupation" class="text-warm-grey text-sm mt-0.5">
         {{ profile.occupation }}
       </p>
     </div>

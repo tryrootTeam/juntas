@@ -7,8 +7,8 @@
       :tabindex="activeTab === 'register' ? 0 : -1"
       id="tab-register"
       aria-controls="panel-register"
-      class="flex-1 py-3 px-4 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2"
-      :class="activeTab === 'register' ? 'bg-white text-deepblue' : 'bg-deepblue-200/30 text-deepblue-300 hover:bg-deepblue-200/50'"
+      class="flex-1 py-3 px-4 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota focus-visible:ring-offset-2"
+      :class="activeTab === 'register' ? 'bg-off-white text-charcoal' : 'bg-warm-sand/50 text-warm-grey hover:bg-warm-sand'"
       @click="select('register')"
     >
       Registro
@@ -20,8 +20,8 @@
       :tabindex="activeTab === 'login' ? 0 : -1"
       id="tab-login"
       aria-controls="panel-login"
-      class="flex-1 py-3 px-4 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota focus-visible:ring-offset-2"
-      :class="activeTab === 'login' ? 'bg-white text-deepblue' : 'bg-deepblue-200/30 text-deepblue-300 hover:bg-deepblue-200/50'"
+      class="flex-1 py-3 px-4 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota focus-visible:ring-offset-2"
+      :class="activeTab === 'login' ? 'bg-off-white text-charcoal' : 'bg-warm-sand/50 text-warm-grey hover:bg-warm-sand'"
       @click="select('login')"
     >
       Entrar

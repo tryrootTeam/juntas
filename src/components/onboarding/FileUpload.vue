@@ -1,10 +1,10 @@
 <template>
   <div class="space-y-2">
-    <label class="block text-sm font-medium text-deepblue">{{ label }}</label>
+    <label class="block text-sm font-medium text-charcoal">{{ label }}</label>
     <div
-      class="border-2 border-dashed rounded-xl p-6 text-center transition-colors"
+      class="border-2 border-dashed rounded-xl p-6 text-center transition-colors duration-300"
       :class="[
-        isDragging ? 'border-terracota bg-terracota-50' : 'border-cream-400 hover:border-deepblue-200',
+        isDragging ? 'border-soft-terracota bg-soft-terracota/20' : 'border-warm-sand hover:border-charcoal/30',
         disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer',
       ]"
       @dragover.prevent="isDragging = true"
@@ -27,15 +27,15 @@
             alt="Vista previa"
             class="max-h-24 rounded-lg object-cover"
           />
-          <div v-else class="w-12 h-12 rounded-lg bg-cream-400 flex items-center justify-center text-deepblue-300">
+          <div v-else class="w-12 h-12 rounded-lg bg-warm-sand flex items-center justify-center text-warm-grey">
             <span class="text-2xl">📄</span>
           </div>
           <div class="text-left min-w-0">
-            <p class="text-sm font-medium text-deepblue truncate">{{ modelValue.name }}</p>
-            <p class="text-xs text-deepblue-300">{{ formatSize(modelValue.size) }}</p>
+            <p class="text-sm font-medium text-charcoal truncate">{{ modelValue.name }}</p>
+            <p class="text-xs text-warm-grey">{{ formatSize(modelValue.size) }}</p>
           </div>
-          <div v-if="uploadProgress !== null" class="w-full max-w-xs h-1.5 bg-cream-400 rounded-full overflow-hidden">
-            <div class="h-full bg-terracota transition-all duration-300" :style="{ width: `${uploadProgress}%` }" />
+          <div v-if="uploadProgress !== null" class="w-full max-w-xs h-1.5 bg-warm-sand rounded-full overflow-hidden">
+            <div class="h-full bg-soft-terracota transition-all duration-300" :style="{ width: `${uploadProgress}%` }" />
           </div>
           <button
             v-if="!disabled"
@@ -48,16 +48,16 @@
         </div>
       </template>
       <template v-else>
-        <p class="text-sm text-deepblue-300 mb-1">Arrastra un archivo aquí o</p>
+        <p class="text-sm text-warm-grey mb-1">Arrastra un archivo aquí o</p>
         <button
           type="button"
-          class="text-terracota font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota rounded"
+          class="text-soft-terracota font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-terracota rounded"
           :disabled="disabled"
           @click="inputRef?.click()"
         >
           haz clic para subir
         </button>
-        <p class="text-xs text-deepblue-300 mt-2">{{ accept }} · máx. 5 MB</p>
+        <p class="text-xs text-warm-grey mt-2">{{ accept }} · máx. 5 MB</p>
       </template>
     </div>
     <p v-if="errorMessage" class="text-sm text-red-600" role="alert">{{ errorMessage }}</p>

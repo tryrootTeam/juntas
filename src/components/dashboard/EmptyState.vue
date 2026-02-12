@@ -1,14 +1,14 @@
 <template>
   <div class="text-center py-12 px-4">
-    <div class="w-16 h-16 rounded-full bg-cream-300 flex items-center justify-center mx-auto mb-4 text-deepblue-300 text-3xl" aria-hidden="true">
+    <div class="w-16 h-16 rounded-full bg-warm-sand/50 flex items-center justify-center mx-auto mb-4 text-warm-grey text-3xl" aria-hidden="true">
       {{ icon }}
     </div>
-    <h3 class="text-lg font-semibold text-deepblue mb-1">{{ title }}</h3>
-    <p class="text-deepblue-300 mb-6 max-w-sm mx-auto">{{ message }}</p>
+    <h3 class="font-display text-lg font-semibold text-charcoal mb-1">{{ title }}</h3>
+    <p class="text-warm-grey font-body mb-6 max-w-sm mx-auto">{{ message }}</p>
     <button
       v-if="hasActiveFilter"
       type="button"
-      class="px-5 py-2.5 rounded-lg font-medium bg-sage text-white hover:bg-sage-600 transition"
+      class="btn-primary"
       @click="$emit('reset-filter')"
     >
       Ver todos los matches

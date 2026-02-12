@@ -1,13 +1,13 @@
 <template>
   <section
     id="como-funciona"
-    class="py-16 md:py-20 bg-cream-50"
+    class="py-16 md:py-20 bg-off-white"
   >
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold text-deepblue text-center mb-3">
+    <div class="container-juntas">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-charcoal text-center mb-3">
         Cómo funciona Juntas
       </h2>
-      <p class="text-sm md:text-base text-deepblue/70 text-center max-w-2xl mx-auto mb-10">
+      <p class="text-sm md:text-base text-warm-grey text-center max-w-2xl mx-auto mb-10">
         Un proceso pensado para que encuentres compañeras con las que realmente te sientas cómoda compartiendo hogar.
       </p>
 
@@ -15,15 +15,15 @@
         <li
           v-for="step in steps"
           :key="step.number"
-          class="flex flex-col rounded-2xl bg-white border border-cream-300 p-5 shadow-sm"
+          class="card-feature flex flex-col"
         >
-          <span class="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-terracota text-xs font-semibold text-cream-50">
+          <span class="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-soft-terracota text-xs font-semibold text-off-white">
             {{ step.number }}
           </span>
-          <h3 class="mb-2 text-sm font-semibold text-deepblue">
+          <h3 class="font-display mb-2 text-sm font-semibold text-charcoal">
             {{ step.title }}
           </h3>
-          <p class="text-xs text-deepblue/75">
+          <p class="text-xs text-warm-grey">
             {{ step.description }}
           </p>
         </li>

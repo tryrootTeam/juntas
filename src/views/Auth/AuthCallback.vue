@@ -1,13 +1,13 @@
 <template>
   <div
-    class="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-sage-100 via-sage-50 to-deepblue-800"
+    class="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-sage-100 via-sage-50 to-deep-plum"
     role="main"
     aria-live="polite"
     aria-busy="loading"
   >
-    <p v-if="loading" class="text-deepblue">Conectando…</p>
+    <p v-if="loading" class="text-charcoal">Conectando…</p>
     <p v-else-if="error" class="text-red-600">{{ error }}</p>
-    <RouterLink v-if="error" to="/login" class="mt-4 text-terracota hover:underline">Volver a iniciar sesión</RouterLink>
+    <RouterLink v-if="error" to="/login" class="mt-4 text-soft-terracota hover:underline">Volver a iniciar sesión</RouterLink>
   </div>
 </template>
 

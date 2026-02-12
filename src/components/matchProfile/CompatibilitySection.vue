@@ -1,19 +1,19 @@
 <template>
   <section
-    class="bg-white rounded-2xl p-6 md:p-8 shadow-lg"
+    class="card-feature rounded-2xl p-6 md:p-8"
     aria-labelledby="compatibility-heading"
   >
-    <h2 id="compatibility-heading" class="text-xl font-bold text-deepblue mb-4">
+    <h2 id="compatibility-heading" class="font-display text-xl font-bold text-charcoal mb-4">
       Compatibilidad
     </h2>
     <div class="flex items-center gap-4 mb-6">
       <div
-        class="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white flex-shrink-0"
+        class="w-20 h-20 rounded-full flex items-center justify-center font-display text-2xl font-bold text-off-white flex-shrink-0"
         :class="scoreClass"
       >
         {{ score }}%
       </div>
-      <p class="text-deepblue-300">
+      <p class="text-warm-grey">
         Puntuación global de compatibilidad con tu perfil.
       </p>
     </div>
@@ -23,17 +23,17 @@
         :key="key"
         class="flex items-center justify-between gap-4"
       >
-        <span class="text-deepblue font-medium">{{ value }}</span>
-        <div class="flex-1 max-w-[200px] h-2 bg-cream-400 rounded-full overflow-hidden">
+        <span class="text-charcoal font-medium">{{ value }}</span>
+        <div class="flex-1 max-w-[200px] h-2 bg-warm-sand rounded-full overflow-hidden">
           <div
-            class="h-full rounded-full bg-sage transition-all"
+            class="h-full rounded-full bg-sage-green transition-all duration-300"
             :style="{ width: `${Math.min(100, breakdown[key] ?? 0)}%` }"
           />
         </div>
-        <span class="text-sm font-semibold text-deepblue w-10 text-right">{{ breakdown[key] ?? 0 }}%</span>
+        <span class="text-sm font-semibold text-charcoal w-10 text-right">{{ breakdown[key] ?? 0 }}%</span>
       </div>
     </div>
-    <p v-else class="text-deepblue-300 text-sm">
+    <p v-else class="text-warm-grey text-sm">
       No hay desglose detallado disponible.
     </p>
   </section>
@@ -49,9 +49,9 @@ const props = defineProps({
 
 const scoreClass = computed(() => {
   const s = props.score
-  if (s >= 80) return 'bg-sage'
+  if (s >= 80) return 'bg-sage-green'
   if (s >= 60) return 'bg-sage-400'
-  return 'bg-deepblue-300'
+  return 'bg-warm-grey'
 })
 
 const breakdownLabels = computed(() => {

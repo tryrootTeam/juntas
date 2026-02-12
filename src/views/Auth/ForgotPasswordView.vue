@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center p-8 bg-cream" role="main" aria-label="Recuperar contraseña">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8 border border-cream-400">
-      <h2 class="text-2xl font-bold text-deepblue mb-2">
+    <div class="w-full max-w-md bg-off-white rounded-xl shadow-lg p-8 border border-warm-sand">
+      <h2 class="font-display text-2xl font-bold text-charcoal mb-2">
         ¿Olvidaste tu contraseña?
       </h2>
-      <p class="text-sm text-deepblue-300 mb-6">
+      <p class="text-sm text-warm-grey mb-6">
         Introduce tu email y te enviaremos un enlace para restablecer tu contraseña.
       </p>
 
@@ -22,14 +22,14 @@
 
       <form v-else class="space-y-4" @submit.prevent="handleSubmit">
         <div>
-          <label for="forgot-email" class="block text-sm font-medium text-deepblue mb-1">Email</label>
+          <label for="forgot-email" class="block text-sm font-medium text-charcoal mb-1">Email</label>
           <input
             id="forgot-email"
             v-model="email"
             type="email"
             autocomplete="email"
             required
-            class="w-full px-3 py-2 border rounded-lg border-cream-400 focus:ring-2 focus:ring-terracota focus:border-terracota"
+            class="w-full px-3 py-2 border rounded-lg border-warm-sand focus:ring-2 focus:ring-soft-terracota focus:border-soft-terracota"
             :class="{ 'border-red-400': error }"
             placeholder="tu@email.com"
           />
@@ -37,18 +37,18 @@
         </div>
         <button
           type="submit"
-          class="w-full py-2.5 rounded-lg font-medium text-white bg-terracota hover:bg-terracota-600 transition"
+          class="btn-primary w-full"
           :disabled="loading"
         >
           {{ loading ? 'Enviando…' : 'Enviar enlace' }}
         </button>
       </form>
 
-      <p class="mt-6 text-center text-sm text-deepblue-300">
-        <RouterLink to="/login" class="text-terracota font-medium hover:underline">Volver a iniciar sesión</RouterLink>
+      <p class="mt-6 text-center text-sm text-warm-grey">
+        <RouterLink to="/login" class="text-soft-terracota font-medium hover:underline">Volver a iniciar sesión</RouterLink>
       </p>
       <p class="mt-4 text-center">
-        <RouterLink to="/" class="text-deepblue-300 hover:text-terracota text-sm">← Volver al inicio</RouterLink>
+        <RouterLink to="/" class="text-warm-grey hover:text-soft-terracota text-sm">← Volver al inicio</RouterLink>
       </p>
     </div>
   </div>
