@@ -1,67 +1,151 @@
 <template>
-  <div class="min-h-screen p-8 bg-cream">
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold text-deepblue">Dashboard</h1>
-      <p class="text-deepblue-300">Bienvenue sur Juntas</p>
-    </header>
+  <div class="dashboard-page min-h-screen bg-cream pt-16">
+    <AppHeader :is-public="false" />
 
-    <div
-      v-if="showVerificationNotification"
-      class="mb-6 p-4 rounded-xl border border-sage-200 bg-sage-50 text-deepblue flex items-start gap-3"
-      role="status"
-    >
-      <span class="flex-shrink-0 text-2xl" aria-hidden="true">✓</span>
-      <div class="flex-1 min-w-0">
-        <p class="font-medium text-deepblue">Tu perfil ha sido creado correctamente.</p>
-        <p class="text-sm text-deepblue-300 mt-0.5">Será verificado en las próximas 24 horas.</p>
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-deepblue">
+          ¡Hola {{ userName }}!
+        </h1>
+        <p class="text-deepblue-300 mt-1">Tus matches compatibles</p>
+      </header>
+
+      <VerificationBanner
+        v-if="showVerificationBanner"
+        :status="verificationStatus"
+        class="mb-6"
+      />
+
+      <StatsCards :stats="matchesStore.statsFormatted" class="mb-8" />
+
+      <div class="mb-6 flex flex-wrap gap-2">
+        <button
+          v-for="opt in filterOptions"
+          :key="opt.value"
+          type="button"
+          :data-testid="`filter-${opt.value}`"
+          :class="[
+            'px-4 py-2 rounded-lg text-sm font-medium transition',
+            activeFilter === opt.value
+              ? 'bg-sage text-white'
+              : 'bg-white border border-cream-400 text-deepblue hover:bg-cream-100',
+          ]"
+          @click="activeFilter = opt.value"
+        >
+          {{ opt.label }}
+        </button>
       </div>
-      <button
-        type="button"
-        class="flex-shrink-0 p-1.5 text-deepblue-300 hover:text-deepblue rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-terracota"
-        aria-label="Cerrar notificación"
-        @click="notificationDismissed = true"
-      >
-        <span aria-hidden="true">×</span>
-      </button>
-    </div>
 
-    <div class="bg-white rounded-xl shadow p-6 border border-cream-400">
-      <p class="text-deepblue-300">Dashboard placeholder - à développer (Phase 2)</p>
-      <button
-        @click="handleSignOut"
-        class="mt-4 px-4 py-2 text-terracota hover:bg-terracota-50 rounded transition"
+      <div v-if="matchesStore.loading" class="flex justify-center py-16">
+        <p class="text-deepblue-300">Cargando matches...</p>
+      </div>
+
+      <div v-else-if="matchesStore.error" class="bg-white rounded-xl p-6 border border-red-200">
+        <p class="text-terracota font-medium">{{ matchesStore.error }}</p>
+      </div>
+
+      <div v-else-if="filteredMatches.length === 0" class="bg-white rounded-xl border border-cream-400">
+        <EmptyState
+          :filter="activeFilter"
+          @reset-filter="activeFilter = 'all'"
+        />
+      </div>
+
+      <div
+        v-else
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        Cerrar sesión
-      </button>
+        <MatchCard
+          v-for="match in filteredMatches"
+          :key="match.id"
+          :match="match"
+          @view="viewMatch(match)"
+          @pass="passMatch(match)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import VerificationBanner from '@/components/dashboard/VerificationBanner.vue'
+import StatsCards from '@/components/dashboard/StatsCards.vue'
+import MatchCard from '@/components/dashboard/MatchCard.vue'
+import EmptyState from '@/components/dashboard/EmptyState.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useUserStore } from '@/stores/user'
-import { useRouter } from 'vue-router'
+import { useMatchesStore } from '@/stores/matches'
 
+const router = useRouter()
 const authStore = useAuthStore()
 const userStore = useUserStore()
-const router = useRouter()
+const matchesStore = useMatchesStore()
 
-const notificationDismissed = ref(false)
+const activeFilter = ref('all')
 
-const showVerificationNotification = computed(() => {
-  if (notificationDismissed.value) return false
+const filterOptions = [
+  { value: 'all', label: 'Todos' },
+  { value: 'with_children', label: 'Con hijos' },
+  { value: 'without_children', label: 'Sin hijos' },
+  { value: 'high_compat', label: 'Alta compatibilidad 80%+' },
+]
+
+const userName = computed(() => {
   const p = userStore.profile
-  return p?.profile_completed && p?.identity_status === 'under_review'
+  return p?.name || p?.display_name || 'Usuario'
 })
+
+const verificationStatus = computed(() => {
+  const s = userStore.profile?.identity_status
+  if (s === 'under_review' || s === 'rejected') return s
+  return 'pending'
+})
+
+const showVerificationBanner = computed(() => {
+  const s = userStore.profile?.identity_status
+  return s === 'pending' || s === 'under_review' || s === 'rejected'
+})
+
+const filteredMatches = computed(() => {
+  let list = matchesStore.matches.filter((m) => m.status !== 'passed')
+  switch (activeFilter.value) {
+    case 'with_children':
+      list = list.filter((m) => m.has_children === true)
+      break
+    case 'without_children':
+      list = list.filter((m) => m.has_children !== true)
+      break
+    case 'high_compat':
+      list = list.filter((m) => (m.compatibility_score ?? 0) >= 80)
+      break
+    default:
+      break
+  }
+  return list
+})
+
+function viewMatch(match) {
+  router.push({ name: 'match-profile', params: { id: match.id } })
+}
+
+async function passMatch(match) {
+  const uid = authStore.user?.id
+  if (!uid) return
+  try {
+    await matchesStore.updateMatchStatus(uid, match.id, 'passed', match)
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 onMounted(async () => {
   const uid = authStore.user?.id
   if (uid && !userStore.profile) await userStore.fetchProfile(uid)
+  if (uid && userStore.profile) {
+    await matchesStore.fetchMatchCandidates(uid, userStore.profile)
+  }
 })
-
-async function handleSignOut() {
-  await authStore.signOut()
-  router.push('/')
-}
 </script>

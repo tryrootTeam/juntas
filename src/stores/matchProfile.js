@@ -91,10 +91,12 @@ export const useMatchProfileStore = defineStore('matchProfile', () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
+    const [userA, userB] = [user.id, matchId].sort()
     await supabase
       .from('matches')
-      .update({ status: 'archived' })
-      .or(`and(user_a.eq.${user.id},user_b.eq.${matchId}),and(user_a.eq.${matchId},user_b.eq.${user.id})`)
+      .update({ status: 'passed' })
+      .eq('user_a', userA)
+      .eq('user_b', userB)
       .select()
   }
 
