@@ -71,6 +71,15 @@ export const useAuthStore = defineStore('auth', () => {
     return data
   }
 
+  async function updatePassword(newPassword) {
+    const { data, error } = await supabase.auth.updateUser({ password: newPassword })
+    if (error) {
+      const mapped = mapAuthError(error)
+      throw Object.assign(new Error(mapped.message), { code: mapped.code })
+    }
+    return data
+  }
+
   async function signOut() {
     const uid = user.value?.id
     const email = user.value?.email
