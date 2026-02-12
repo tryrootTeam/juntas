@@ -299,7 +299,9 @@ async function handleGoogle() {
   authError.value = ''
   loading.value = true
   try {
-    await authStore.signInWithGoogle()
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
+    const redirectTo = `${window.location.origin}${base}/auth/callback`
+    await authStore.signInWithGoogle(redirectTo)
   } catch (err) {
     authError.value = err.message || 'Error con Google.'
     logAuthEvent('oauth_error', { metadata: { message: err.message, code: err.code } })
