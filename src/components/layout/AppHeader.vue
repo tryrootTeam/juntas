@@ -75,6 +75,20 @@
         </button>
         <RouterLink
           v-if="!isPublic"
+          to="/dashboard"
+          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+        >
+          Dashboard
+        </RouterLink>
+        <RouterLink
+          v-if="!isPublic"
+          to="/profile"
+          class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
+        >
+          Mi Perfil
+        </RouterLink>
+        <RouterLink
+          v-if="!isPublic"
           to="/chat"
           class="text-sm font-medium text-deepblue hover:text-terracota-600 transition"
         >
@@ -111,6 +125,22 @@
         >
           Testimonios
         </button>
+        <RouterLink
+          v-if="!isPublic"
+          to="/dashboard"
+          class="block rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          @click="mobileOpen = false"
+        >
+          Dashboard
+        </RouterLink>
+        <RouterLink
+          v-if="!isPublic"
+          to="/profile"
+          class="block rounded-md px-3 py-2 text-base font-medium text-deepblue hover:bg-cream-200"
+          @click="mobileOpen = false"
+        >
+          Mi Perfil
+        </RouterLink>
         <RouterLink
           v-if="!isPublic"
           to="/chat"
