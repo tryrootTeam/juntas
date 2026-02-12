@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { supabase } from '@/services/supabase'
 import { mapAuthError } from '@/lib/authErrors'
+import { logAuthEvent } from '@/services/authLog'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
@@ -59,6 +60,17 @@ export const useAuthStore = defineStore('auth', () => {
     return data
   }
 
+  async function resetPasswordForEmail(email, redirectTo) {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: redirectTo || undefined,
+    })
+    if (error) {
+      const mapped = mapAuthError(error)
+      throw Object.assign(new Error(mapped.message), { code: mapped.code })
+    }
+    return data
+  }
+
   async function signOut() {
     const uid = user.value?.id
     const email = user.value?.email
@@ -77,6 +89,8 @@ export const useAuthStore = defineStore('auth', () => {
     signInWithEmail,
     signUpWithEmail,
     signInWithGoogle,
+    resetPasswordForEmail,
+    updatePassword,
     signOut,
   }
 })

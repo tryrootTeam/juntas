@@ -13,20 +13,37 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/AuthView.vue'),
+      component: () => import('@/views/Auth/AuthPage.vue'),
       meta: { public: true, requiresAuth: false },
     },
     {
       path: '/register',
       name: 'register',
-      component: () => import('@/views/AuthView.vue'),
+      component: () => import('@/views/Auth/AuthPage.vue'),
+      meta: { public: true, requiresAuth: false },
+    },
+    {
+      path: '/auth/callback',
+      name: 'auth-callback',
+      component: () => import('@/views/Auth/AuthCallback.vue'),
+      meta: { public: true, requiresAuth: false },
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: () => import('@/views/Auth/ForgotPasswordView.vue'),
+      meta: { public: true, requiresAuth: false },
+    },
+    {
+      path: '/reset-password',
+      name: 'reset-password',
+      component: () => import('@/views/Auth/ResetPasswordView.vue'),
       meta: { public: true, requiresAuth: false },
     },
     {
       path: '/auth',
       name: 'auth',
-      component: () => import('@/views/AuthView.vue'),
-      meta: { public: true },
+      redirect: { name: 'login' },
     },
     {
       path: '/onboarding',

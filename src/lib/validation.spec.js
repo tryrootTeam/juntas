@@ -5,6 +5,7 @@ import {
   validatePhone,
   validateName,
   validateCheckboxes,
+  getPasswordStrength,
 } from './validation'
 
 describe('validateEmail', () => {
@@ -110,5 +111,18 @@ describe('validateCheckboxes', () => {
   })
   it('retourne valid: true si les deux cochés', () => {
     expect(validateCheckboxes({ terms: true, privacy: true }).valid).toBe(true)
+  })
+})
+
+describe('getPasswordStrength', () => {
+  it('retourne weak pour vide ou très court', () => {
+    expect(getPasswordStrength('')).toBe('weak')
+    expect(getPasswordStrength('ab')).toBe('weak')
+  })
+  it('retourne medium pour mot de passe correct mais simple', () => {
+    expect(getPasswordStrength('Abcdef12')).toBe('medium')
+  })
+  it('retourne strong pour mot de passe long et varié', () => {
+    expect(getPasswordStrength('Abcdef12!@')).toBe('strong')
   })
 })
