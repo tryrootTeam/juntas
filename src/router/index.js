@@ -59,6 +59,18 @@ const router = createRouter({
       meta: { requiresAuth: true, requiresCompleteProfile: true },
     },
     {
+      path: '/match/:id',
+      name: 'match-profile',
+      component: () => import('@/views/MatchProfileView.vue'),
+      meta: { requiresAuth: true, requiresCompleteProfile: true },
+    },
+    {
+      path: '/chat/:id',
+      name: 'chat',
+      component: () => import('@/views/ChatView.vue'),
+      meta: { requiresAuth: true, requiresCompleteProfile: true },
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/views/NotFoundView.vue'),
