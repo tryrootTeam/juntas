@@ -10,11 +10,14 @@ Sans ça, le lien dans l’email « Réinitialiser le mot de passe » et le reto
 
 1. Ouvre le **Dashboard Supabase** → ton projet.
 2. Va dans **Authentication** → **URL Configuration**.
-3. Dans **Redirect URLs**, ajoute les URLs autorisées, une par ligne, par exemple :
+3. **Site URL** : mets l’URL de ton site (ex. en prod `https://juntasbyroot.netlify.app`). Ne pas mettre d’URL relative.
+4. Dans **Redirect URLs**, ajoute les URLs autorisées, une par ligne, par exemple :
    - En local : `http://localhost:5173/reset-password` et `http://localhost:5173/auth/callback`
-   - En prod : `https://ton-domaine.com/reset-password` et `https://ton-domaine.com/auth/callback`
+   - En prod : `https://juntasbyroot.netlify.app/auth/callback` et `https://juntasbyroot.netlify.app/reset-password`
 
-Supabase n’acceptera que les redirections vers ces URLs. Si tu oublies `https://ton-domaine.com/reset-password`, le lien « Réinitialiser le mot de passe » ne fonctionnera pas après clic.
+**Important :** Toujours inclure `https://` (ou `http://` en local). Si tu mets seulement le domaine sans protocole, Supabase peut rediriger vers son propre domaine avec ce texte en chemin → page blanche et erreur « requested path is invalid ».
+
+Supabase n’acceptera que les redirections vers ces URLs. Si tu oublies `https://juntasbyroot.netlify.app/reset-password`, le lien « Réinitialiser le mot de passe » ne fonctionnera pas après clic.
 
 ---
 

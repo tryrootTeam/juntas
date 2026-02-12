@@ -168,6 +168,7 @@ import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { logAuthEvent } from '@/services/authLog'
+import { getAuthCallbackUrl } from '@/lib/authHelpers'
 import {
   validateEmail,
   validatePassword,
@@ -299,8 +300,7 @@ async function handleGoogle() {
   authError.value = ''
   loading.value = true
   try {
-    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
-    const redirectTo = `${window.location.origin}${base}/auth/callback`
+    const redirectTo = getAuthCallbackUrl()
     await authStore.signInWithGoogle(redirectTo)
   } catch (err) {
     authError.value = err.message || 'Error con Google.'

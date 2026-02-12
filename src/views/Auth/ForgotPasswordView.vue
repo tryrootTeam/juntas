@@ -58,6 +58,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { validateEmail } from '@/lib/validation'
+import { getResetPasswordCallbackUrl } from '@/lib/authHelpers'
 
 const authStore = useAuthStore()
 const email = ref('')
@@ -86,8 +87,7 @@ async function handleSubmit() {
 
   loading.value = true
   try {
-    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
-    const redirectTo = `${window.location.origin}${base}/reset-password`
+    const redirectTo = getResetPasswordCallbackUrl()
     await authStore.resetPasswordForEmail(email.value.trim(), redirectTo)
     sent.value = true
   } catch (err) {

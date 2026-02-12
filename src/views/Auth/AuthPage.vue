@@ -44,6 +44,7 @@ import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { logAuthEvent } from '@/services/authLog'
+import { getAuthCallbackUrl } from '@/lib/authHelpers'
 import RegisterForm from './components/RegisterForm.vue'
 import LoginForm from './components/LoginForm.vue'
 
@@ -77,8 +78,7 @@ function onAuthSuccess() {
 
 async function handleGoogle() {
   try {
-    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
-    const redirectTo = `${window.location.origin}${base}/auth/callback`
+    const redirectTo = getAuthCallbackUrl()
     await authStore.signInWithGoogle(redirectTo)
   } catch (err) {
     const formRef = activeTab.value === 'register' ? registerFormRef.value : loginFormRef.value
