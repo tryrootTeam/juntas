@@ -65,9 +65,15 @@ const router = createRouter({
       meta: { requiresAuth: true, requiresCompleteProfile: true },
     },
     {
-      path: '/chat/:id',
+      path: '/chat',
       name: 'chat',
-      component: () => import('@/views/ChatView.vue'),
+      component: () => import('@/views/Chat/ChatPage.vue'),
+      meta: { requiresAuth: true, requiresCompleteProfile: true },
+    },
+    {
+      path: '/chat/:conversationId',
+      name: 'chat-conversation',
+      component: () => import('@/views/Chat/ChatPage.vue'),
       meta: { requiresAuth: true, requiresCompleteProfile: true },
     },
     {
